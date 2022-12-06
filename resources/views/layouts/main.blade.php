@@ -23,6 +23,8 @@
 
     @include('partials.navbar')
 
+    @yield('slider')
+
     <div class="container">
         @yield('container')
     </div>
