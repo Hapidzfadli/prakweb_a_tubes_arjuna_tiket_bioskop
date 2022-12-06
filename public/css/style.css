@@ -1,0 +1,46 @@
+body {
+  background-color: #0c111b;
+  font-family: 'Poppins', sans-serif;
+}
+
+.navbar {
+  background-color: #121926;
+}
+
+.nav-link {
+  font-weight: 400;
+}
+
+.navbar-brand h3 {
+  font-family: 'Zen Dots';
+  color: #ffffff;
+  text-shadow: 0px 0px 10px rgb(0, 162, 255);
+
+}
+
+nav {
+  box-shadow: 0px 4px 6px -1px rgba(255, 255, 255, 0.3);
+  z-index: 9999;
+}
+
+/* // Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {  }
+
+/* // Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) { }
+
+/* // Large devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+  .lg-collap{
+    margin-left: 50px;
+  }
+  .ml-lg-50 {
+    margin-left: 50px;
+  }
+}
+
+/* // X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { }
+
+/* // XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px) { }
