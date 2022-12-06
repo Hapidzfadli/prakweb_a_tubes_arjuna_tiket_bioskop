@@ -1,5 +1,5 @@
 <!-- navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+<nav class="navbar navbar-expand-lg navbar-dark ">
   <div class="container">
     <a class="navbar-brand" href="#">
       <h3>Arjuna 21</h3>
