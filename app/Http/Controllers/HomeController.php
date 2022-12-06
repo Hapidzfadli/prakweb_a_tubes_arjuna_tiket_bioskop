@@ -11,6 +11,10 @@ class HomeController extends Controller
     public function index()
     {
         $posts = Movie::getMovie();
-        return $posts;
+        return view('layouts.main', [
+            "title" => "Arjuna 21",
+            'post' => $posts,
+            "active" => 'active'
+        ]);
     }
 }
