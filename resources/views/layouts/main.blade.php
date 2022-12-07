@@ -28,6 +28,8 @@
     <div class="container">
         @yield('container')
     </div>
+
+    @include('layouts.footer')
     
     <script src="js/script.js"></script>
 
