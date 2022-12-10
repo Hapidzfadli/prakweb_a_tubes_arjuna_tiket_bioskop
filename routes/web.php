@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DetailController;
 use App\Http\Controllers\HomeController;
 use App\Models\Movie;
 use Illuminate\Support\Facades\Route;
@@ -16,10 +17,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'index']);
-Route::get('/movie/{id}', function ($id) {
-    $detail = Movie::getDetails($id);
-    return $detail;
-});
+Route::get('/movie/{id}', [DetailController::class, 'index']);
+
 Route::get('/upcoming', function () {
     $upcoming = Movie::getUpcoming();
     return $upcoming;
