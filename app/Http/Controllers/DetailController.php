@@ -7,8 +7,13 @@ use Illuminate\Http\Request;
 
 class DetailController extends Controller
 {
-    public function index($id) {
+    public function index($id)
+    {
         $movie = Movie::getDetails($id);
-        return $movie;
+        return view('page.detail', [
+            'title' => $movie['title'],
+            'active' => 'playing',
+            'movie' => $movie,
+        ]);
     }
 }
