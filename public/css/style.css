@@ -1,8 +1,13 @@
 body {
+  position: relative;
+  color: #ffffff;
   background-color: #0c111b;
   font-family: 'Poppins', sans-serif;
 }
 
+nav .container {
+  flex-direction: row;
+}
 .navbar {
   background-color: #121926;
 }
@@ -19,7 +24,7 @@ body {
 }
 
 nav {
-  box-shadow: 0px 4px 6px -1px rgba(255, 255, 255, 0.3);
+  box-shadow: 0px 4px 6px -1px rgba(60, 56, 56, 0.3);
   z-index: 9999;
 }
 
@@ -86,6 +91,7 @@ nav {
 
 /* footer */
 footer {
+  width: 100%;
   padding: 15px;
   margin-top: 20px;
   color: white;
@@ -119,4 +125,44 @@ footer {
 
 .detail-img:hover img {
   box-shadow: rgba(217, 214, 214, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+
+.order {
+  background-color: #121926;
+  box-shadow: rgba(22, 22, 24, 0.2) 0px 7px 29px 0px;
+}
+
+.dropdown ul li {
+  border-bottom: 1px solid; border-color: #99989869; 
+}
+.dropdown ul li:hover {
+  background-color: rgba(153, 182, 241, 0.521);
+  cursor: pointer;
+}
+
+.dropdown ul li img {
+  width: 50px;
+  padding: 10px;
+}
+li {
+  list-style: none;
+}
+#schedules .col span {
+  padding: 2px 4px;
+  margin-right: 3px;
+  cursor: pointer;
+  position: relative;
+  z-index: 10;
+}
+#schedules .col span i {
+  margin-right: 3px;
+}
+
+#schedules .col span:hover {
+  background-color: #4e6eaa;
+}
+
+.list-item-sc:hover, .list-item-time:hover {
+  cursor: pointer;
+  background-color: #172132;
 }

@@ -2,7 +2,7 @@
 
 @section('container')
 
-<div class="row p-5">
+<div class="row p-5" style="min-height: 90vh">
     <div class="detail-img col-lg-3 ">
         <img src="{{ $movie['bannerUrl'] }}" alt="" class="rounded w-100">
         <a href="/order" class="w-100">
@@ -107,29 +107,5 @@
         </div>
     </div>
 </div>
-{{-- <div class="col-lg-6">
-    <table class="table table-responsive pt-4 text-white">
-        <tr>
-            <td>Tanggal Rilis </td>
-            <td>:</td>
-            <td><b><b></td>
-        </tr>
-        <tr>
-            <td>Sutradara</td>
-            <td>:</td>
-            <td><b><b></td>
-        </tr>
-        <tr>
-            <td>Produser</td>
-            <td>:</td>
-            <td><b><b></td>
-        </tr>
-        <tr>
-            <td>Deskripsi Singkat</td>
-            <td>:</td>
-            <td><b><b></td>
-        </tr>
-    </table>
-    <a href="../index.blade.php" class="btn mt-3 text-white btn-primary">Kembali</a>
-</div> --}}
+
 @endsection
