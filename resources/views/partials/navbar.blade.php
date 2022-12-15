@@ -10,7 +10,7 @@
     <div class="lg-collap collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link {{ ($active === "home") ? 'active' :  ''}}" aria-current="page" href="#">Home</a>
+          <a class="nav-link {{ ($active === "home") ? 'active' :  ''}}" aria-current="page" href="{{route('home')}}">Home</a>
         </li>
       </ul>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -34,7 +34,7 @@
         </li>
       </ul>
       <form action="" class="d-flex" method="get">
-        <input class="keyword form-control me-2" type="text" placeholder="search movie, theater ..." aria-label="Search" size="20" name="keyword" autofocus autocomplete="off">
+        <input class="keyword form-control me-2" type="text" placeholder="search movie, theater ..." aria-label="Search" size="20" name="keyword" autocomplete="off">
         <button class="tombol-cari btn btn-outline-primary" type="submit" name="cari"><i class="fa fa-search"></i></button>
       </form>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 ml-lg-50">

@@ -1,9 +1,12 @@
 <?php
 
-use App\Http\Controllers\DetailController;
-use App\Http\Controllers\HomeController;
 use App\Models\Movie;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\DetailController;
+use App\Http\Controllers\OrderAjaxController;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/movie/{id}', [DetailController::class, 'index']);
 
 Route::get('/upcoming', function () {
@@ -40,3 +43,14 @@ Route::get('/schedules/{theater}/{id}', function ($theater, $id) {
     $schedules = Movie::getSchedulesDetail($theater, $id);
     return $schedules;
 });
+
+Route::get('/order', [OrderController::class, 'index']);
+Route::controller(OrderAjaxController::class)->group(function () {
+    Route::post('order-ajax-cities', 'cities')->name('order.cities');
+    Route::post('order-ajax-theaters', 'theaters')->name('order.theaters');
+    Route::post('order-ajax-schedules', 'schedules')->name('order.schedules');
+    Route::post('order-ajax-schedules-details', 'schedulesDetails')->name('order.schedules.details');
+});
+
+Route::post('/pay', [OrderController::class, 'pay']);
+Route::get('/pay', [OrderController::class, 'pay']);
