@@ -25,7 +25,8 @@
 							</div>
 							<div class="total-tiket">
 								<span><i class="bi bi-ticket-detailed"></i></span>
-								<span class="mx-1">{{$tiket['jumlah-tiket']}} Tiket</span>
+								<span class="mx-1">{{$tiket['jumlah-tiket']}} Tiket, [  @foreach ($tiket->seat as $seat) {{$seat}} ]
+								@endforeach</span>
 							</div>
 							<div class="date">
 								<span><i class="bi bi-calendar-check"></i></span>
