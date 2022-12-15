@@ -104,9 +104,12 @@
                             </div>
                         </div>
                     </div>
-                    <input id="date" name="date" type="hidden" value="">
-                    <input id="price" name="price" type="hidden" value="">
-                    <input type="hidden" name="total-price" value="4000">
+                    <input id="date" name="date" type="hidden" value="" required>
+                    <input id="price" name="price" type="hidden" value="" required>
+                    <input type="hidden" name="total-price" value="" required>
+                    <input type="hidden" name="id-movie" value="" required>
+
+                    <input type="hidden" name="order_id" value="{{$order_id}}" required>
 
                     <hr>
                     <div id="jumlah" class="row">
@@ -192,7 +195,7 @@
 
                 </div>
                 <div class="col-12" style="display: grid">
-                    <button id="btn-bayar" type="button" class="btn btn-secondary w-100 rounded mx-auto">Bayar</button>
+                    <button id="btn-bayar" type="button" class="btn btn-secondary w-100 rounded mx-auto">Lanjutkan</button>
                 </div>
                 <div class="my-5"></div>
                 <div data-v-cbcc5384="" style="" class="col-12">
@@ -447,7 +450,7 @@
             })
 
             $('#btn-bayar').on('click', function(){
-                $("#form-bayar").submit()
+                $("#submitform").click()
             })
             $(document).on('click', ".list-item-sc", function(){
                 var txtdefault = $(".text-date p");
@@ -465,6 +468,7 @@
                 $(".label-tiket").text(textMovie);
                 var theater = $('#theater').find('option:selected').attr('id');
                 var movie = $(this).attr('id')
+                $('input[name=id-movie]').val(movie)
     
                 $.ajax({
                     type: "POST",

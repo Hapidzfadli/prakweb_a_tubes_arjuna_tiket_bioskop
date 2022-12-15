@@ -17,18 +17,17 @@ class CreateSnapTokenService extends Midtrans
 
     public function getSnapToken()
     {
-        $faker = \Faker\Factory::create();
         $params = [
             'transaction_details' => [
-                'order_id' => $faker->bothify('?????-#####'),
-                'gross_amount' => str_replace(".", "", $this->order->price),
+                'order_id' => $this->order->order_id,
+                'gross_amount' => str_replace(".", "", $this->order['total-price']),
             ],
             'item_details' => [
                 [
                     'id' => 1,
                     'quantity' => 1,
                     'name' => $this->order->movie,
-                    'price' => str_replace(".", "", $this->order->price),
+                    'price' => str_replace(".", "", $this->order['total-price']),
                     'brand' => 'Arjuna21',
                     'category' => $this->order->type,
                     'merchant_name' => 'Ticket Bioskop',
