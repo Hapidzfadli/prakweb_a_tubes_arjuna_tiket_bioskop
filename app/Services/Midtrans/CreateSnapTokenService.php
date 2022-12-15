@@ -17,29 +17,27 @@ class CreateSnapTokenService extends Midtrans
 
     public function getSnapToken()
     {
+        $faker = \Faker\Factory::create();
         $params = [
             'transaction_details' => [
-                'order_id' => $this->order->number,
-                'gross_amount' => $this->order->total_price,
+                'order_id' => $faker->bothify('?????-#####'),
+                'gross_amount' => str_replace(".", "", $this->order->price),
             ],
             'item_details' => [
                 [
                     'id' => 1,
-                    'price' => '150000',
                     'quantity' => 1,
-                    'name' => 'Flashdisk Toshiba 32GB',
-                ],
-                [
-                    'id' => 2,
-                    'price' => '60000',
-                    'quantity' => 2,
-                    'name' => 'Memory Card VGEN 4GB',
-                ],
+                    'name' => $this->order->movie,
+                    'price' => str_replace(".", "", $this->order->price),
+                    'brand' => 'Arjuna21',
+                    'category' => $this->order->type,
+                    'merchant_name' => 'Ticket Bioskop',
+                ]
             ],
             'customer_details' => [
-                'first_name' => 'Martin Mulyo Syahidin',
-                'email' => 'mulyosyahidin95@gmail.com',
-                'phone' => '081234567890',
+                'first_name' => 'Hapid Fadli',
+                'email' => 'hapidzfadli@gmail.com',
+                'phone' => '085797463762',
             ]
         ];
 

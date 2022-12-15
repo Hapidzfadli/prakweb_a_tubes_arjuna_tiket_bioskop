@@ -4,7 +4,7 @@
     <div class="p-4 " style="min-height: 100vh">
         <div class="order row py-3 px-1 rounded">
             <div class="col-lg-8">
-                <form action="/pay" method="POST">
+                <form action="/pay" method="POST" id="form-bayar">
                     @csrf
                     <div class="input-group mb-3">
                         <label for="cities" class="input-group-prepend">
@@ -45,7 +45,7 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="input-grup mb-3">
+                    <div class="input-grup">
                         <div id="schedules" class="row">
                             <div id="jadwal" class="col position-relative">
                                 <div class="row">
@@ -68,7 +68,7 @@
                                 <div class="row">
                                     <div class="col-2"><span class="rounded"><i class="bi bi-alarm"></i></span></div>
                                     <div class="col">
-                                        <select id="time" style="padding: 2px 4px;" name="time" class="form-select" aria-label="Default select example">
+                                        <select id="time" style="padding: 2px 4px;" name="time" class="form-select" autocomplete="off" aria-label="Default select example">
                                             <option selected>12:30</option>
                                             <option>13:00</option>
                                             <option>15:40</option>
@@ -79,37 +79,158 @@
                                         </select>
                                     </div>
                                 </div>
-                                
-                                
                             </div>
-                            <div id="seat " class="col">
-                                <span class="rounded"><i class="bi bi-grid"></i></span>
-                                A32
+
+                            <div class="col">
+                                <div class="row">
+                                    <div class="col-2">
+                                        <span class="rounded"><i class="bi bi-grid"></i></span>
+                                    </div>
+                                    <div id="seat" class="col">
+                                        <input type='text' class='text-white seat-i' name='seat[]' style='width: 30px; background-color:transparent; border: none;' value='A0' readonly='readonly'>
+                                    </div>
+                                </div>
                             </div>
+                            
                             <div class="col">
                                 <div class="row">
                                     <div class="col-2">
                                         <span class="rounded"><i class="bi bi-cash-coin"></i></span>
                                     </div>
                                     <div id="price" class="col">
-                                        <p>35.000</p>
+                                        <p>00.00</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <input id="date" name="date" type="hidden" value="">
-                    <input id="seat" name="seat" type="hidden" value="A38">
-                    <input id="price" name="price" type="hidden" value="35.000">
+                    <input id="price" name="price" type="hidden" value="">
+                    <input type="hidden" name="total-price" value="4000">
 
-                    <button class="btn btn-dark" type="submit">submit</button>
+                    <hr>
+                    <div id="jumlah" class="row">
+                        <p class="fs-5">Jumlah tiket</p>
+                        <div class="col mb-3 tiket">
+                            <span id="kurang" class="rounded">
+                                <i class="bi bi-dash-circle"></i>
+                            </span>
+                            <input type="text" id="jumlah-tiket" autocomplete="off" name="jumlah-tiket" style="width: 50px; text-align: center;" class="mx-3" value="0" readonly="readonly">
+                            <span id="tambah" class="rounded">
+                                <i class="bi bi-plus-circle"></i>
+                            </span>
+                        </div>
+                        <div class="col-9">
+                            <div class="show-seat">
+                                <div class="row">
+                                    <div class="col-3">
+                                        @php
+                                            $ABC = ['A', 'B', 'C', 'D', 'E', 'F'];
+                                        @endphp
+                                        @for ($i = 0; $i < count($ABC); $i++)
+                                           @for ($j = 1; $j <= 4; $j++)
+                                                <span>{{$ABC[$i]}}{{$j}}</span>
+                                           @endfor
+                                        @endfor
+                                    </div>
+                                    <div class="col-5">
+                                        @for ($i = 0; $i < count($ABC); $i++)
+                                           @for ($j = 5; $j < 12; $j++)
+                                                <span>{{$ABC[$i]}}{{$j}}</span>
+                                           @endfor
+                                        @endfor
+                                    </div>
+                                    <div class="col-3">
+                                        @for ($i = 0; $i < count($ABC); $i++)
+                                           @for ($j = 12; $j < 16; $j++)
+                                                <span>{{$ABC[$i]}}{{$j}}</span>
+                                           @endfor
+                                        @endfor
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button id="submitform" class="btn btn-dark invisible" type="submit">submit</button>
                 </form>
             </div>
-            <div class="col-lg-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ut ullam eius quos? Beatae molestias magni vel quo nam minima placeat sequi exercitationem, quibusdam itaque consequuntur qui quos neque non error.</div>
+            <div class="col-lg-4">
+                <div class="total">
+                    <h4>Tambah Tiket</h4>
+                    <div class="row">
+                        <div class="col-9">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="tiket-movie" value="" id="tiket-movie" checked>
+                                <label class="form-check-label" style="font-size: 0.9rem"  for="tiket-movie">
+                                  <span class="label-tiket">Title</span> | <span class="jml-tiket">0</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col price-t">
+                            <p>00.00</p>
+                        </div>
+                    </div>
+                    <hr class="my-1">
+                    <div class="row">
+                        <p style="color: rgb(228, 220, 220)" >Pajak dan Biaya Tambahan</p>
+                        <div class="col-9">
+                            <p>PPN 11%</p>
+                        </div>
+                        <div class="col">
+                            <p class="ppn">00.00</p>
+                        </div>
+                    </div>
+                    <hr style="margin: 0">
+                    <div class="row mt-2">
+                        <div class="col-9">
+                            <p>Total</p>
+                        </div>
+                        <div class="col">
+                            <p class="price-total">00.00</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-12" style="display: grid">
+                    <button id="btn-bayar" type="button" class="btn btn-secondary w-100 rounded mx-auto">Bayar</button>
+                </div>
+                <div class="my-5"></div>
+                <div data-v-cbcc5384="" style="" class="col-12">
+                    <p data-v-cbcc5384="">Transaksi makin mudah dengan metode pembayaran terlengkap!</p> 
+                    <div data-v-cbcc5384="" class="summary-cart metode mt-3">
+                        <div data-v-cbcc5384="" class="d-flex mb-3">
+                            <img data-v-cbcc5384="" src="https://niagaspace.sgp1.digitaloceanspaces.com/www/assets/images/2022/orderflow/icons/bca.svg" alt="bca" class="lazyload m-auto" width="36" height="16">
+                            <img data-v-cbcc5384="" src="https://niagaspace.sgp1.digitaloceanspaces.com/www/assets/images/2022/orderflow/icons/mandiri.svg" alt="mandiri" class="lazyload m-auto" width="36" height="16">
+                            <img data-v-cbcc5384="" src="https://niagaspace.sgp1.digitaloceanspaces.com/www/assets/images/2022/orderflow/icons/bri.svg" alt="bri" class="lazyload m-auto" width="36" height="16">
+                            <img data-v-cbcc5384="" src="https://niagaspace.sgp1.digitaloceanspaces.com/www/assets/images/2022/orderflow/icons/bni.svg" alt="bni" class="lazyload m-auto" width="36" height="16">
+                            <img data-v-cbcc5384="" src="https://niagaspace.sgp1.digitaloceanspaces.com/www/assets/images/2022/orderflow/icons/qris.svg" alt="qris" class="lazyload m-auto" width="36" height="16">
+                            <img data-v-cbcc5384="" src="https://niagaspace.sgp1.digitaloceanspaces.com/www/assets/images/2022/orderflow/icons/gopay.svg" alt="gopay" class="lazyload m-auto" width="36" height="16">
+                            <img data-v-cbcc5384="" src="https://niagaspace.sgp1.digitaloceanspaces.com/www/assets/images/2022/orderflow/icons/ovo.svg" alt="ovo" class="lazyload m-auto" width="36" height="16">
+                            <img data-v-cbcc5384="" src="https://niagaspace.sgp1.digitaloceanspaces.com/www/assets/images/2022/orderflow/icons/linkaja.svg" alt="linkaja" class="lazyload m-auto" width="36" height="16">
+                        </div> 
+                        <div data-v-cbcc5384="" class="d-flex">
+                            <img data-v-cbcc5384="" src="https://niagaspace.sgp1.digitaloceanspaces.com/www/assets/images/2022/orderflow/icons/dana.svg" alt="dana" class="lazyload m-auto" width="36" height="16">
+                            <img data-v-cbcc5384="" src="https://niagaspace.sgp1.digitaloceanspaces.com/www/assets/images/2022/orderflow/icons/shopeepay.svg" alt="shopeepay" class="lazyload m-auto" width="36" height="16">
+                            <img data-v-cbcc5384="" src="https://niagaspace.sgp1.digitaloceanspaces.com/www/assets/images/2022/orderflow/icons/indomaret.svg" alt="indomaret" class="lazyload m-auto" width="36" height="16">
+                            <img data-v-cbcc5384="" src="https://niagaspace.sgp1.digitaloceanspaces.com/www/assets/images/2022/orderflow/icons/alfamart.svg" alt="alfamart" class="lazyload m-auto" width="36" height="16">
+                            <img data-v-cbcc5384="" src="https://niagaspace.sgp1.digitaloceanspaces.com/www/assets/images/2022/orderflow/icons/visa.svg" alt="visa" class="lazyload m-auto" width="36" height="16">
+                            <img data-v-cbcc5384="" src="https://niagaspace.sgp1.digitaloceanspaces.com/www/assets/images/2022/orderflow/icons/master-card.svg" alt="master-card" class="lazyload m-auto" width="36" height="16">
+                            <img data-v-cbcc5384="" src="https://niagaspace.sgp1.digitaloceanspaces.com/www/assets/images/2022/orderflow/icons/jcb.svg" alt="jcb" class="lazyload m-auto" width="36" height="16">
+                            <img data-v-cbcc5384="" src="https://niagaspace.sgp1.digitaloceanspaces.com/www/assets/images/2022/orderflow/icons/paypal.svg" alt="paypal" class="lazyload m-auto" width="36" height="16">
+                    </div>
+                </div>
+            </div>
+            </div>
         </div>
     </div>
 
     <script>
+        function numberWithCommas(x) {
+        var parts = x.toString().split(".");
+        parts[0]=parts[0].replace(/\B(?=(\d{3})+(?!\d))/g,".");
+        return parts.join(",");
+        }
+
         $(document).ready(function(){
             $('#cities').on('change', function(){
                 var $option = $(this).find('option:selected');
@@ -178,6 +299,8 @@
                 var option = $(this).find('option:selected');
                 var text = option.text();
                 var price = $("#price p");
+                var jml_tiket = $('#jumlah-tiket');
+                var value = parseInt(jml_tiket.val())
                 switch (text) {
                     case "12:30":
                         price.text("35.000")
@@ -211,6 +334,17 @@
                         price.text("35.000");
                         $('input[name=price]').val("35.000");
                 }
+
+                var textPrice = price.text().split('.').join('');
+                var priceTotal = parseFloat(textPrice) * value;
+                
+                $(".price-t").text(numberWithCommas(priceTotal)) 
+                var ppn = (priceTotal / 100) * 11;
+                $('.ppn').text(numberWithCommas(ppn)) 
+
+                var totalBayar = priceTotal + ppn;
+                $('.price-total').text(numberWithCommas(totalBayar))
+                $('input[name=total-price]').val(totalBayar)
             });
     
             $("#movie").bind("keypress click", function(){
@@ -237,6 +371,84 @@
             $("#time span").on('click', function(){
                 $('.dropdwn-time').toggleClass( "invisible" );
             })
+
+            $("#kurang").on('click', function(){
+                var jml_tiket = $('#jumlah-tiket');
+                var value = parseInt(jml_tiket.val())
+                var classrm = ".id-ch" + jml_tiket.val();
+                var seat = $("#seat");
+                var price = $("#price p");
+                if(value > 0) {
+                    value--
+                    jml_tiket.val(value)
+                    seat.children('input').last().remove()
+                    
+                    var textPrice = price.text().split('.').join('');
+                    var priceTotal = parseFloat(textPrice) * value;
+                    
+                    $(".price-t").text(numberWithCommas(priceTotal)) 
+                    var ppn = (priceTotal / 100) * 11;
+                    $('.ppn').text(numberWithCommas(ppn)) 
+
+                    var totalBayar = priceTotal + ppn;
+                    $('.price-total').text(numberWithCommas(totalBayar))
+                    $('input[name=total-price]').val(totalBayar)
+                }
+            });
+
+            $("#tambah").on('click', function(){
+                var jml_tiket = $('#jumlah-tiket');
+                var value = parseInt(jml_tiket.val());
+                var price = $("#price p");
+                var seat = $("#seat");
+                var time = $("#time").find('option:selected').text()
+
+
+
+                if(time == "12:30") {
+                    price.text("35.000")
+                    $('input[name=price]').val("35.000");
+                } 
+                
+                value++
+                jml_tiket.val(value)
+                $(".jml-tiket").text(value)
+
+                var textPrice = price.text().split('.').join('');
+
+                var priceTotal = parseFloat(textPrice) * value;
+                $(".price-t").text(numberWithCommas(priceTotal)) 
+
+                var ppn = (priceTotal / 100) * 11;
+                $('.ppn').text(numberWithCommas(ppn)) 
+
+                var totalBayar = priceTotal + ppn;
+                $('.price-total').text(numberWithCommas(totalBayar))
+                $('input[name=total-price]').val(totalBayar)
+
+                var lengtseat = seat.children('input').length;
+
+                if(lengtseat < jml_tiket.val()) {
+                    seat.append("<input type='text' class='text-white' name='seat[]' style='width: 30px; background-color:transparent; border: none;' value='A"+jml_tiket.val()+"' readonly='readonly'>");
+                }
+            });
+
+            $(".show-seat span").on('click', function(){
+
+                var seat = $("#seat");
+                var jml_tiket = $('#jumlah-tiket').val();
+                var lengtseat = seat.children('input').length;
+                
+                if(lengtseat < jml_tiket) {
+                    seat.append("<input type='text' class='text-white' name='seat[]' style='width: 30px; background-color:transparent; border: none;' value='"+$(this).text()+"' readonly='readonly'>")
+                } else {
+                    seat.children('input').last().val($(this).text());
+                }
+            })
+
+            $('#btn-bayar').on('click', function(){
+                $("#form-bayar").submit()
+            })
             $(document).on('click', ".list-item-sc", function(){
                 var txtdefault = $(".text-date p");
                 txtdefault.text($(this).text());
@@ -248,7 +460,9 @@
             
     
             $(document).on("click", ".opt-movie" , function() {
+                var textMovie = $(this).find('span').text();
                 $('#movie').val($(this).find('span').text())
+                $(".label-tiket").text(textMovie);
                 var theater = $('#theater').find('option:selected').attr('id');
                 var movie = $(this).attr('id')
     

@@ -52,6 +52,5 @@ Route::controller(OrderAjaxController::class)->group(function () {
     Route::post('order-ajax-schedules-details', 'schedulesDetails')->name('order.schedules.details');
 });
 
-Route::post('/pay', function (Request $request) {
-    return $request;
-});
+Route::post('/pay', [OrderController::class, 'pay']);
+Route::get('/pay', [OrderController::class, 'pay']);

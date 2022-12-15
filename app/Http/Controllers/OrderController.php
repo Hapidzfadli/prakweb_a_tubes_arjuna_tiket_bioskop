@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Movie;
+use App\Services\Midtrans\CreateSnapTokenService;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -19,6 +20,12 @@ class OrderController extends Controller
 
     public function pay(Request $request)
     {
+        $midtrans = new CreateSnapTokenService($request);
+        $snapToken = $midtrans->getSnapToken();
+
         return $request;
+        // return view('order.pay', [
+        //     'snap' => $snapToken,
+        // ]);
     }
 }

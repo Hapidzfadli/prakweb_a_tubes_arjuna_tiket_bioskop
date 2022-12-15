@@ -166,3 +166,24 @@ li {
   cursor: pointer;
   background-color: #172132;
 }
+
+.tiket span {
+  padding: 2px 4px;
+  cursor: pointer;
+}
+
+.tiket span:hover {
+  background-color: #4e6eaa;
+} 
+
+.show-seat span {
+  text-align: center;
+  display: inline-block;
+  width: 30px;
+  cursor: pointer;
+}
+
+.metode img {
+  background-color: white;
+  box-shadow: rgba(193, 193, 220, 0.2) 0px 7px 29px 0px;
+}
