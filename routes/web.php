@@ -22,6 +22,20 @@ use Illuminate\Http\Request;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/movie/{id}', [DetailController::class, 'index']);
 
+Route::get('/login', function () {
+    return view('login.index',  [
+        'title' => 'login',
+        'active' => 'playing'
+    ]);
+});
+
+Route::get('/register', function () {
+    return view('register.index',  [
+        'title' => 'register',
+        'active' => 'playing'
+    ]);
+});
+
 Route::get('/upcoming', function () {
     $upcoming = Movie::getUpcoming();
     return $upcoming;
