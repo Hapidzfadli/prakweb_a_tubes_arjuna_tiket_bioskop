@@ -20,7 +20,7 @@
 
     
 </head>
-<body>
+<body>  
 
     @include('partials.navbar')
 

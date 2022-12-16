@@ -39,7 +39,7 @@
       </form>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 ml-lg-50">
         <li class="nav-item">
-          <a class="nav-link {{ ($active === "login") ? 'active' :  ''}} fs-5" aria-current="page" href="#"><i class="bi bi-box-arrow-in-right"></i> Login</a>
+          <a class="nav-link {{ ($active === "login") ? 'active' :  ''}} fs-5" aria-current="page" href="/login"><i class="bi bi-box-arrow-in-right"></i> Login</a>
         </li>
       </ul>
     </div>
