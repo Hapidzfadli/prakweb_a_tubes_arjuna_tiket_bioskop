@@ -10,7 +10,7 @@
                         <label for="cities" class="input-group-prepend">
                           <span class="input-group-text rounded-0" id="basic-addon1"><i class="bi bi-geo-alt"></i></span>
                         </label>
-                        <select id="cities" name="cities" class="form-select" aria-label="Default select example">
+                        <select id="cities" name="city" class="form-select" aria-label="Default select example">
                             <option selected>Pilih Kota</option>
                             @foreach ($cities as $city)
                                 <option value="{{$city['name']}}" id="{{$city['id']}}"> {{$city['name']}}</option>
@@ -106,10 +106,8 @@
                     </div>
                     <input id="date" name="date" type="hidden" value="" required>
                     <input id="price" name="price" type="hidden" value="" required>
-                    <input type="hidden" name="total-price" value="" required>
-                    <input type="hidden" name="id-movie" value="" required>
-
-                    <input type="hidden" name="order_id" value="{{$order_id}}" required>
+                    <input type="hidden" name="total_price" value="" required>
+                    <input type="hidden" name="id_movie" value="" required>
 
                     <hr>
                     <div id="jumlah" class="row">
@@ -118,7 +116,7 @@
                             <span id="kurang" class="rounded">
                                 <i class="bi bi-dash-circle"></i>
                             </span>
-                            <input type="text" id="jumlah-tiket" autocomplete="off" name="jumlah-tiket" style="width: 50px; text-align: center;" class="mx-3" value="0" readonly="readonly">
+                            <input type="text" id="jml_tiket" autocomplete="off" name="jml_tiket" style="width: 50px; text-align: center;" class="mx-3" value="0" readonly="readonly">
                             <span id="tambah" class="rounded">
                                 <i class="bi bi-plus-circle"></i>
                             </span>
@@ -302,7 +300,7 @@
                 var option = $(this).find('option:selected');
                 var text = option.text();
                 var price = $("#price p");
-                var jml_tiket = $('#jumlah-tiket');
+                var jml_tiket = $('#jml_tiket');
                 var value = parseInt(jml_tiket.val())
                 switch (text) {
                     case "12:30":
@@ -347,7 +345,7 @@
 
                 var totalBayar = priceTotal + ppn;
                 $('.price-total').text(numberWithCommas(totalBayar))
-                $('input[name=total-price]').val(totalBayar)
+                $('input[name=total_price]').val(totalBayar)
             });
     
             $("#movie").bind("keypress click", function(){
@@ -376,7 +374,7 @@
             })
 
             $("#kurang").on('click', function(){
-                var jml_tiket = $('#jumlah-tiket');
+                var jml_tiket = $('#jml_tiket');
                 var value = parseInt(jml_tiket.val())
                 var classrm = ".id-ch" + jml_tiket.val();
                 var seat = $("#seat");
@@ -395,18 +393,17 @@
 
                     var totalBayar = priceTotal + ppn;
                     $('.price-total').text(numberWithCommas(totalBayar))
-                    $('input[name=total-price]').val(totalBayar)
+                    $('input[name=total_price]').val(totalBayar)
                 }
             });
 
+             
             $("#tambah").on('click', function(){
-                var jml_tiket = $('#jumlah-tiket');
+                var jml_tiket = $('#jml_tiket');
                 var value = parseInt(jml_tiket.val());
                 var price = $("#price p");
                 var seat = $("#seat");
                 var time = $("#time").find('option:selected').text()
-
-
 
                 if(time == "12:30") {
                     price.text("35.000")
@@ -427,7 +424,7 @@
 
                 var totalBayar = priceTotal + ppn;
                 $('.price-total').text(numberWithCommas(totalBayar))
-                $('input[name=total-price]').val(totalBayar)
+                $('input[name=total_price]').val(totalBayar)
 
                 var lengtseat = seat.children('input').length;
 
@@ -439,7 +436,7 @@
             $(".show-seat span").on('click', function(){
 
                 var seat = $("#seat");
-                var jml_tiket = $('#jumlah-tiket').val();
+                var jml_tiket = $('#jml_tiket').val();
                 var lengtseat = seat.children('input').length;
                 
                 if(lengtseat < jml_tiket) {
@@ -468,7 +465,7 @@
                 $(".label-tiket").text(textMovie);
                 var theater = $('#theater').find('option:selected').attr('id');
                 var movie = $(this).attr('id')
-                $('input[name=id-movie]').val(movie)
+                $('input[name=id_movie]').val(movie)
     
                 $.ajax({
                     type: "POST",

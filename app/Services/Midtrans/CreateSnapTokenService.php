@@ -2,7 +2,9 @@
 
 namespace App\Services\Midtrans;
 
+use App\Models\User;
 use Midtrans\Snap;
+use Illuminate\Support\Facades\DB;
 
 class CreateSnapTokenService extends Midtrans
 {
@@ -17,26 +19,28 @@ class CreateSnapTokenService extends Midtrans
 
     public function getSnapToken()
     {
+        $customer = DB::table('users')->where('id',  $this->order->user_id)->first();
+
         $params = [
             'transaction_details' => [
                 'order_id' => $this->order->order_id,
-                'gross_amount' => str_replace(".", "", $this->order['total-price']),
+                'gross_amount' => $this->order->total_price,
             ],
             'item_details' => [
                 [
                     'id' => 1,
                     'quantity' => 1,
                     'name' => $this->order->movie,
-                    'price' => str_replace(".", "", $this->order['total-price']),
+                    'price' => $this->order->total_price,
                     'brand' => 'Arjuna21',
                     'category' => $this->order->type,
                     'merchant_name' => 'Ticket Bioskop',
                 ]
             ],
             'customer_details' => [
-                'first_name' => 'Hapid Fadli',
-                'email' => 'hapidzfadli@gmail.com',
-                'phone' => '085797463762',
+                'first_name' => $customer->name,
+                'email' => $customer->email,
+                'phone' => $customer->no_telphone,
             ]
         ];
 

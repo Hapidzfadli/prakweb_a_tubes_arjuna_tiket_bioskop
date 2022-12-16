@@ -13,7 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('seats', function (Blueprint $table) {
+            $table->id();
+            $table->string('order_id')->references('order_id')->on('orders');;
+            $table->string('no_seat');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('seats');
     }
 };
