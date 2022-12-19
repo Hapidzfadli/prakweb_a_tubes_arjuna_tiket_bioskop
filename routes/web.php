@@ -23,22 +23,13 @@ use App\Http\Controllers\OrderAjaxController;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/movie/{id}', [DetailController::class, 'index']);
 
-Route::get('/login', function () {
-    return view('login.index',  [
-        'title' => 'login',
-        'active' => 'playing'
-    ]);
-});
-Route::post('/login', function () {
-    return "";
-});
-
-Route::get('/register', function () {
-    return view('register.index',  [
-        'title' => 'register',
-        'active' => 'playing'
-    ]);
-});
+Route::get('/login', [LoginController::class, 'index']);
+Route::get('/register', [RegisterController::class, 'index']);
+Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::post('/login', [LoginController::class, 'authenticate']);
+Route::post('/logout', [LoginController::class, 'logout']);
+Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
+Route::post('/register', [RegisterController::class, 'store']);
 
 Route::get('/upcoming', function () {
     $upcoming = Movie::getUpcoming();
