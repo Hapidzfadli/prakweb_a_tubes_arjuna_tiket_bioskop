@@ -33,16 +33,26 @@ Route::post('/register', [RegisterController::class, 'store']);
 
 Route::get('/upcoming', function () {
     $upcoming = Movie::getUpcoming();
-    return $upcoming;
+    return view('page.upcoming', [
+        'title' => 'upcoming',
+        'active' => 'upcoming',
+        'posts' => $upcoming
+    ]);
 });
 Route::get('/cities', function () {
     $cities = Movie::getCities();
     return $cities;
 });
+
 Route::get('/theater/{city_id}', function ($city_id) {
     $theater = Movie::getTheaters($city_id);
-    return $theater;
+    return view('page.theater', [
+        'title' => 'theater',
+        'active' => 'theater',
+        'posts' => $theater
+    ]);
 });
+
 
 Route::get('/schedules/{theater}', function ($theater) {
     $schedules = Movie::getSchedules($theater);

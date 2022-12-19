@@ -15,23 +15,14 @@
       </ul>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link {{ ($active === "upcoming") ? 'active' :  ''}}" aria-current="page" href="#">Upcoming</a>
+          <a class="nav-link {{ ($active === "upcoming") ? 'active' :  ''}}" aria-current="page" href="/upcoming">Upcoming</a>
         </li>
       </ul>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link {{ ($active === "theaters") ? 'active' :  ''}}" aria-current="page" href="#">Theaters</a>
+          <a class="nav-link {{ ($active === "theaters") ? 'active' :  ''}}" aria-current="page" href="/theater">Theaters</a>
         </li>
       </ul>
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link {{ ($active === "playing") ? 'active' :  ''}}" aria-current="page" href="#">Playing</a>
-        </li>
-      </ul>
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link {{ ($active === "schedules") ? 'active' :  ''}}" aria-current="page" href="#">Schedules</a>
-        </li>
       </ul>
       <form action="" class="d-flex" method="get">
         <input class="keyword form-control me-2" type="text" placeholder="search movie, theater ..." aria-label="Search" size="20" name="keyword" autocomplete="off">
