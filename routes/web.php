@@ -1,12 +1,13 @@
 <?php
 
 use App\Models\Movie;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\DetailController;
+use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\OrderAjaxController;
-use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,9 @@ Route::get('/login', function () {
         'title' => 'login',
         'active' => 'playing'
     ]);
+});
+Route::post('/login', function () {
+    return "";
 });
 
 Route::get('/register', function () {
@@ -69,3 +73,6 @@ Route::controller(OrderAjaxController::class)->group(function () {
 Route::post('/pay', [OrderController::class, 'insertData']);
 Route::post('/payment', [OrderController::class, 'order']);
 Route::get('/payment', [OrderController::class, 'order']);
+
+Route::get('auth/google', [GoogleController::class, 'redirectToGoogle']);
+Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
