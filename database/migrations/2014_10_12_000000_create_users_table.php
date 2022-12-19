@@ -19,11 +19,13 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('username')->unique();
             $table->boolean('is_admin')->default(false);
+            $table->string('google_id')->nullable();
             $table->string('no_telphone')->unique()->nullable();
             $table->string('address')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
+            $table->string('google_id')->nullable();
             $table->timestamps();
         });
     }

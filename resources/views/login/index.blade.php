@@ -79,8 +79,10 @@
               </div>
               <button type="submit" class="btn btn-primary w-100" name="submit">Login</button>
                 <hr>
-              <button type="submit" class="btn btn-light w-100" name="submit">Login with Google</button>
             </form>
+            <a href="{{ url('auth/google') }}">
+              <button class="btn btn-light w-100" name="submit">Login with Google</button>
+            </a>
           </div>
           <p class="text-center text-white" style="font-size: 14px;">Belum memiliki akun? <a href="/register" style="text-decoration: none;">Register Sekarang!</a></p>
           <div class="card-footer text-center text-white">

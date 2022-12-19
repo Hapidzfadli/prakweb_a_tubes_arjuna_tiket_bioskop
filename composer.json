@@ -11,7 +11,8 @@
         "laravel/framework": "^9.19|^8.75",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
-        "midtrans/midtrans-php": "^2.5"
+        "midtrans/midtrans-php": "^2.5",
+        "laravel/socialite": "*"
     },
     "require-dev": {
         "laravel/pint": "^1.0",
