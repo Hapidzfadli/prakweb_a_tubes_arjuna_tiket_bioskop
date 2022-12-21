@@ -79,3 +79,40 @@ Route::get('/payment', [OrderController::class, 'order']);
 
 Route::get('auth/google', [GoogleController::class, 'redirectToGoogle']);
 Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
+
+Route::get('/dashboard', function () {
+    $listnavitem = [
+        [
+            'title' => 'Dashboard',
+            'icon' => 'home-outline',
+        ],
+        [
+            'title' => 'Customers',
+            'icon' => 'people-outline',
+        ],
+        [
+            'title' => 'Messege',
+            'icon' => 'chatbubble-outline',
+        ],
+        [
+            'title' => 'Help',
+            'icon' => 'help-outline',
+        ],
+        [
+            'title' => 'Setting',
+            'icon' => 'settings-outline',
+        ],
+        [
+            'title' => 'Password',
+            'icon' => 'lock-closed-outline',
+        ],
+        [
+            'title' => 'Sign Out',
+            'icon' => 'log-out',
+        ],
+    ];
+    return view('dashboard.index', [
+        'title' => 'Dashboard',
+        'listnav' => $listnavitem,
+    ]);
+});
