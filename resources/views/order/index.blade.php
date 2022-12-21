@@ -452,9 +452,7 @@
             $(document).on('click', ".list-item-sc", function(){
                 var txtdefault = $(".text-date p");
                 txtdefault.text($(this).text());
-
                 $('input[name=date]').val($(this).text());
-                
                 $('.dropdwn-sc').addClass( "invisible" );
             });
             
@@ -481,8 +479,12 @@
                         $.each(word, function(index, value){
                             if(index != word.length) {
                                 $("#list-date").append("<li class='list-item-sc'>"+value+"</li>")
+                               
                             }
                         })
+                        $('input[name=date]').val(word[0])
+                        var txtdefault = $(".text-date p");
+                        txtdefault.text(word[0]);
                     },
                     error: function (data, textStatus, errorThrown) {
                         console.log(data);

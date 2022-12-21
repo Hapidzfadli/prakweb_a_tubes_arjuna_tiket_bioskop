@@ -4,9 +4,11 @@ use App\Models\Movie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\DetailController;
 use App\Http\Controllers\GoogleController;
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\OrderAjaxController;
 
 /*
