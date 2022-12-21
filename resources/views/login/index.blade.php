@@ -13,6 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
     <!-- font awesome -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>{{ $title }}</title>
     <style>
@@ -36,17 +37,17 @@
     <div class="container vh-100">
       <div class="row justify-content-center h-100">
         @if (session()->has('success'))
-        
-          <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <div style="left: 50%;
+          transform: translateX(-50%); z-index: 100 !important;" class="w-50 top-0 z-30 alert alert-success alert-dismissible fade show" role="alert">
             {{ session('success') }}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-          
+          </div> 
         @endif
 
         @if (session()->has('loginError'))
         
-          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <div style="left: 50%;
+          transform: translateX(-50%); z-index: 100 !important;" class="w-50 top-0 z-30 alert alert-danger position-absolute alert-dismissible fade show" role="alert">
             {{ session('loginError') }}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
           </div>
@@ -92,6 +93,14 @@
       </div>
     </div>
     <!-- login -->
+
+    <script>
+      $(document).ready(function(){
+        $(document).on('click', '.btn-close', function(){
+          $('.alert').remove()
+        });
+      });
+    </script>
   
   
   </body>
