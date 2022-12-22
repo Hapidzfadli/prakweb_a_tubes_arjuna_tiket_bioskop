@@ -230,7 +230,7 @@ body {
 .card-statistic .col-lg-3 .row {
     padding: 10px;
     width: 98%;
-    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+    box-shadow: rgba(170, 176, 181, 0.2) 0px 8px 24px;
     border-radius: 20px;
 }
 .card-statistic .col-lg-3 {
@@ -245,4 +245,25 @@ body {
 .card-statistic .col-lg-3 .row:hover .number-stats ,
 .card-statistic .col-lg-3 .row:hover .icon-stats ion-icon {
     color: white;
+}
+
+.details .recentOrders {
+    box-shadow: rgba(170, 176, 181, 0.2) 0px 8px 24px;
+}
+
+.cardHeader h5 {
+    color: var(--blue);
+}
+.badge {
+    text-decoration: none;
+    line-height: 100%;
+}
+
+.table-order table {
+    color: var(--black2);
+}
+
+.details .recentOrders table tbody tr:hover {
+    background: rgb(221, 216, 255);
+    color: #4b1b1b;
 }

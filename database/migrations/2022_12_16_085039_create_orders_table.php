@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->string('order_id')->primary();
             $table->foreignId('user_id');
+            $table->string('payment_id')->foreignId();
+            $table->string('seat_id')->foreignId();
             $table->string('city');
             $table->string('type');
             $table->string('theater');

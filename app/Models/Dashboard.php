@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Seat extends Model
+class Dashboard extends Model
 {
     use HasFactory;
-    protected $guarded = ['id'];
 
-    public function order()
+    public static function getRecentOrder()
     {
-        return $this->hasOne(Order::class, 'order_id');
+        $orders = Order::with('user', 'payment')->get();
+        return $orders;
     }
 }
