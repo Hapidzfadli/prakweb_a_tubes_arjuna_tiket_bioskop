@@ -51,6 +51,16 @@ class Movie extends Model
         }
     }
 
+    public static function getCitiesId($city_id)
+    {
+        $cities = Http::get(self::$urlApi . "cities/" . $city_id);
+        $status_code = $cities->status();
+        if ($status_code == 200) {
+            $cities = $cities->json();
+            return collect($cities);
+        }
+    }
+
     public static function getTheaters($city_id)
     {
         $theater = Http::get(self::$urlApi . "theaters?city_id=$city_id");

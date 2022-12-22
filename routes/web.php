@@ -46,12 +46,25 @@ Route::get('/cities', function () {
     return $cities;
 });
 
-Route::get('/theater/{city_id}', function ($city_id) {
+Route::get('/theater/', function () {
+    // default city bandung theater ciwalk
+
+    $city_id = 2;
+    $cities = Movie::getCities();
+    $city = Movie::getCitiesId($city_id);
     $theater = Movie::getTheaters($city_id);
+    $schedules = Movie::getSchedules($theater["XXI"][2]['id']);
+    $infotheater = $schedules['theater'];
+    $posts = $schedules['schedules'];
+
     return view('page.theater', [
         'title' => 'theater',
         'active' => 'theater',
-        'posts' => $theater
+        'theaters' => $theater,
+        'cities' => $cities,
+        'infotheater' => $infotheater,
+        'posts' => $posts,
+        'city' => $city,
     ]);
 });
 
