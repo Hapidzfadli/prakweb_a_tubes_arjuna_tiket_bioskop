@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('google_id')->nullable();
             $table->string('no_telphone')->unique()->nullable();
             $table->string('address')->nullable();
+            $table->string('image')->default("/img/user.png")->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
