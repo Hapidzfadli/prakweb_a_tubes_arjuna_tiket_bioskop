@@ -1,4 +1,4 @@
-<div class="navigation">
+<div class="navigation active">
     <ul>
         <li>
             <a href="">
@@ -8,7 +8,7 @@
         </li>
         @foreach ($listnav as $navtitle)
         <li>
-            <a href="">
+            <a href="{{$navtitle['link']}}">
                 <span class="icon"><ion-icon name={{$navtitle['icon']}}></ion-icon></span>
                 <span class="title">{{$navtitle['title']}}</span>
             </a>

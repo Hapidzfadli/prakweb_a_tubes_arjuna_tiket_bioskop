@@ -1,22 +1,6 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
-<div class="main">
-    <div class="topbar">
-        <div class="toggle">
-            <ion-icon name="menu-outline"></ion-icon>
-        </div>
-        <div class="search">
-            <label for="">
-                <input type="text" placeholder="Search here..">
-                <ion-icon name="search-outline"></ion-icon>
-            </label>
-        </div>
-        <div class="user">
-            <img src="/img/user.png" alt="">
-        </div>
-    </div>
-
     <div class="card-statistic p-4">
         <div class="row">
             <div class="col-lg-3 col-6">
@@ -26,7 +10,7 @@
                         <div class="name-stats">Orders</div>
                     </div>
                     <div class="col-4 icon-stats">
-                        <ion-icon name="eye-outline"></ion-icon>
+                        <ion-icon name="chatbubble-outline"></ion-icon>
                     </div>
                 </div>
             </div>
@@ -65,15 +49,14 @@
             </div>
         </div>
     </div>
-
     {{-- order details list --}}
     <div class="details row px-4 gap-3">
-        <div class="recentOrders col-lg-8 p-3 rounded">
+        <div class="recentOrders col-lg-8 col-md-12 p-3 rounded">
             <div class="cardHeader d-flex justify-content-between">
                 <h5>Recent Orders</h5>
                 <a href="#" class="badge badge-primary bg-primary h-50">View All</a>
             </div>
-            <div class="table-order">
+            <div class="table-order overflow-auto">
                 <table class="table align-middle mb-0 bg-white">
                     <thead class="bg-light">
                         <tr>
@@ -171,5 +154,21 @@
             
         </div>
     </div>
-</div>
+
+<script>
+    $(document).ready(function(){
+        $("#searchbar").bind("keypress click", function(){
+            var value = $(this).val().toLowerCase();
+            
+            $('.list-nav li').filter(function(){
+                $(this).toggle($(this).find('span').text().toLowerCase().indexOf(value) > -1)
+            })
+            $('.list-nav').removeClass( "d-none" );
+            
+        });
+        $(document).on('click', function(){
+            $('.list-nav').addClass( "d-none" );
+        });
+    });
+</script>
 @endsection
