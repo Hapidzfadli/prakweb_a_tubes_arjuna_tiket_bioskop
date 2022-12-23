@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Dashboard;
 use Illuminate\Http\Request;
 use App\Models\Order;
+use App\Models\User;
 
 class DashboardController extends Controller
 {
@@ -43,10 +44,17 @@ class DashboardController extends Controller
         ];
 
         $orders = Dashboard::getRecentOrder();
+        $users = User::latest('created_at')->get();
+        $earning = Dashboard::getEarning();
+        $sales = Dashboard::getSales();
+
         return view('dashboard.index', [
             'title' => 'Dashboard',
             'listnav' => $listnavitem,
             'orders' => $orders,
+            'users' => $users,
+            'earning' => $earning,
+            'sales' => $sales,
         ]);
     }
 }

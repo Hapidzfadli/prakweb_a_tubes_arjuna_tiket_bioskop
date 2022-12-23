@@ -247,7 +247,7 @@ body {
     color: white;
 }
 
-.details .recentOrders {
+.details .recentOrders, .recentCustomer {
     box-shadow: rgba(170, 176, 181, 0.2) 0px 8px 24px;
 }
 
@@ -258,12 +258,16 @@ body {
     text-decoration: none;
     line-height: 100%;
 }
+.cardHeader .badge:hover {
+    background-color: var(--blue) !important;
+    color: var(--grey);
+}
 
-.table-order table {
+.table-order table, .table-customer table {
     color: var(--black2);
 }
 
-.details .recentOrders table tbody tr:hover {
+.details .recentOrders table tbody tr:hover, .details .table-customer table tbody tr:hover {
     background: rgb(221, 216, 255);
     color: #4b1b1b;
 }

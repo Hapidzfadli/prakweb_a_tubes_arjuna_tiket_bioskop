@@ -11,7 +11,29 @@ class Dashboard extends Model
 
     public static function getRecentOrder()
     {
-        $orders = Order::with('user', 'payment')->get();
+        $orders = Order::with('user', 'payment')->latest('created_at')->get();
         return $orders;
+    }
+
+    public static function getSales()
+    {
+        $value = 'settlement';
+        $orders = Order::with('payment:order_id,transaction_status,gross_amount')->whereHas('payment', function ($q) use ($value) {
+            $q->where('transaction_status', '=', $value);
+        })->get('payment_id');
+
+        return $orders;
+    }
+
+    public static function getEarning()
+    {
+        $sales = self::getSales();
+        $total_earn = 0;
+
+        foreach ($sales as $sale) {
+            $total_earn += $sale->payment->gross_amount;
+        }
+
+        return $total_earn;
     }
 }
