@@ -31,6 +31,7 @@ Route::get('/register', [RegisterController::class, 'index']);
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
+Route::get('/logout', [LoginController::class, 'logout']);
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store']);
 
@@ -85,13 +86,13 @@ Route::controller(OrderAjaxController::class)->group(function () {
     Route::post('order-ajax-theaters', 'theaters')->name('order.theaters');
     Route::post('order-ajax-schedules', 'schedules')->name('order.schedules');
     Route::post('order-ajax-schedules-details', 'schedulesDetails')->name('order.schedules.details');
-});
+})->middleware('auth');
 
-Route::post('/pay', [OrderController::class, 'insertData']);
-Route::post('/payment', [OrderController::class, 'order']);
-Route::get('/payment', [OrderController::class, 'order']);
+Route::post('/pay', [OrderController::class, 'insertData'])->middleware('auth');
+Route::post('/payment', [OrderController::class, 'order'])->middleware('auth');
+Route::get('/payment', [OrderController::class, 'order'])->middleware('auth');
 
 Route::get('auth/google', [GoogleController::class, 'redirectToGoogle']);
 Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
 
-Route::get('/dashboard', [DashboardController::class, 'index']);
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');

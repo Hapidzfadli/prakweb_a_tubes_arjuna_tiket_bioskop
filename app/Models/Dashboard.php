@@ -36,4 +36,47 @@ class Dashboard extends Model
 
         return $total_earn;
     }
+
+    public static function getNav()
+    {
+        $navbar = [
+            [
+                'title' => 'Dashboard',
+                'icon' => 'home-outline',
+                'link' => '/dashboard'
+            ],
+            [
+                'title' => 'Customers',
+                'icon' => 'people-outline',
+                'link' => '/dashboard/customers'
+            ],
+            [
+                'title' => 'Orders',
+                'icon' => 'chatbubble-outline',
+                'link' => '/dashboard/orders'
+            ],
+            [
+                'title' => 'Sales',
+                'icon' => 'cart-outline',
+                'link' => '/dashboard/sales'
+            ],
+            [
+                'title' => 'Setting',
+                'icon' => 'settings-outline',
+                'link' => '/dashboard/setting'
+            ],
+            [
+                'title' => 'Password',
+                'icon' => 'lock-closed-outline',
+                'link' => '/dashboard/password'
+
+            ],
+            [
+                'title' => 'Sign Out',
+                'icon' => 'log-out',
+                'link' => '/logout'
+            ],
+        ];
+        return $navbar;
+    }
 }

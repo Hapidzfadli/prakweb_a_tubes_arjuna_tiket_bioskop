@@ -42,7 +42,7 @@ class OrderController extends Controller
 
     public function insertData(Request $request)
     {
-        $request['user_id'] = 2;
+        $request['user_id'] = auth()->user()->id;
         $faker = Faker::create('id_ID');
         $order_id = $faker->bothify('?????-#####');
         $request['order_id'] = $order_id;
