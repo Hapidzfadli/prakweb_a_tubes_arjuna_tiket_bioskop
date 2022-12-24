@@ -37,11 +37,11 @@
                 </div>
                 <div class="user p-2">
                     <div class="name px-2">
-                        <p class="m-0 p-0">Hapid Fadli</p>
-                        <p  class="m-0 p-0">hapidzfadli@gmail.com</p>
+                        <p class="m-0 p-0">{{$auth->name}}</p>
+                        <p  class="m-0 p-0">{{$auth->email}}</p>
                     </div>
                     <div class="img">
-                        <img src="/img/user.png" alt="">
+                        <img src="{{$auth->image}}" alt="">
                     </div>
                 </div>
             </div>
