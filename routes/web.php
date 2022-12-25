@@ -80,7 +80,7 @@ Route::get('/schedules/{theater}/{id}', function ($theater, $id) {
     return $schedules;
 });
 
-Route::get('/order', [OrderController::class, 'index']);
+Route::get('/order', [OrderController::class, 'index'])->middleware('auth');
 Route::controller(OrderAjaxController::class)->group(function () {
     Route::post('order-ajax-cities', 'cities')->name('order.cities');
     Route::post('order-ajax-theaters', 'theaters')->name('order.theaters');
