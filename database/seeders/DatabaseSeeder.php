@@ -28,10 +28,11 @@ class DatabaseSeeder extends Seeder
                 "settlement_time" => "2021-06-15 18:45:28",
                 "payment_type" => "gopay",
                 "order_id" => "Order-5100",
-                "merchant_id" => "G141532850",
+                "pdf_url" => "G141532850",
                 "gross_amount" => "154600.00",
                 "fraud_status" => "accept",
-                "currency" => "IDR"
+                "currency" => "IDR",
+                "status_code" => "200",
             ],
             [
                 "transaction_time" => "2021-06-23 13:28:05",
@@ -41,10 +42,11 @@ class DatabaseSeeder extends Seeder
                 "settlement_time" => "2021-06-23 13:28:21",
                 "payment_type" => "shopeepay",
                 "order_id" => "shopeepay-01",
-                "merchant_id" => "G141532850",
+                "pdf_url" => "G141532850",
                 "gross_amount" => "16700.00",
                 "fraud_status" => "accept",
-                "currency" => "IDR"
+                "currency" => "IDR",
+                "status_code" => "200",
             ],
             [
                 "transaction_time" => "2021-06-23 11:27:20",
@@ -54,10 +56,11 @@ class DatabaseSeeder extends Seeder
                 "settlement_time" => "2021-06-23 11:27:50",
                 "payment_type" => "bank_transfer",
                 "order_id" => "bca-va-01",
-                "merchant_id" => "G141532850",
+                "pdf_url" => "G141532850",
                 "gross_amount" => "100000.00",
                 "fraud_status" => "accept",
-                "currency" => "IDR"
+                "currency" => "IDR",
+                "status_code" => "201",
             ],
             [
                 "transaction_time" => "2021-06-23 11:41:33",
@@ -67,10 +70,11 @@ class DatabaseSeeder extends Seeder
                 "settlement_time" => "2021-06-23 11:42:03",
                 "payment_type" => "bank_transfer",
                 "order_id" => "bni-va-01",
-                "merchant_id" => "G141532850",
+                "pdf_url" => "G141532850",
                 "gross_amount" => "150000.00",
                 "fraud_status" => "accept",
-                "currency" => "IDR"
+                "currency" => "IDR",
+                "status_code" => "201",
             ],
 
         ]);

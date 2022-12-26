@@ -15,17 +15,18 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->timestamp('transaction_time')->useCurrent();
+            $table->timestamp('transaction_time')->useCurrent()->nullable();;
             $table->string('transaction_status');
-            $table->string('transaction_id');
-            $table->string('signature_key');
-            $table->timestamp('settlement_time')->useCurrent();
+            $table->string('transaction_id')->nullable();
+            $table->string('signature_key')->nullable();
+            $table->timestamp('settlement_time')->useCurrent()->nullable();
             $table->string('payment_type');
-            $table->string('order_id');
-            $table->string('merchant_id');
-            $table->integer('gross_amount');
-            $table->string('fraud_status');
-            $table->string('currency');
+            $table->string('order_id')->nullable();
+            $table->string('status_code');
+            $table->string('pdf_url')->nullable();
+            $table->integer('gross_amount')->nullable();
+            $table->string('fraud_status')->nullable();
+            $table->string('currency')->nullable();
             $table->timestamps();
         });
     }

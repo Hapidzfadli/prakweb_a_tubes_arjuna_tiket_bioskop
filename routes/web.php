@@ -83,6 +83,8 @@ Route::get('/schedules/{theater}/{id}', function ($theater, $id) {
 Route::get('/order', [OrderController::class, 'index'])->middleware('auth');
 Route::controller(OrderAjaxController::class)->group(function () {
     Route::post('order-ajax-cities', 'cities')->name('order.cities');
+    Route::post('order-ajax-pending-payment', 'pendingPayment')->name('order.pending.payment');
+    Route::post('order-ajax-success-payment', 'successPayment')->name('order.success.payment');
     Route::post('order-ajax-theaters', 'theaters')->name('order.theaters');
     Route::post('order-ajax-schedules', 'schedules')->name('order.schedules');
     Route::post('order-ajax-schedules-details', 'schedulesDetails')->name('order.schedules.details');

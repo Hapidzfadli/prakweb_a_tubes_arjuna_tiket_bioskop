@@ -102,7 +102,47 @@
 	<script type="text/javascript">
 		var payButton = document.getElementById('btn-bayar');
 		payButton.addEventListener('click', function () {
-		  snap.pay('{{$snap}}');
+            window.snap.pay('{{$snap}}', {
+	          onSuccess: function(result){
+	            /* You may add your own implementation here */
+	            console.log(result);
+                $.ajax({
+                    type: "POST",
+                    url: "{{ route('order.success.payment') }}",
+                    data: { data: result, _token: '{{csrf_token()}}' },
+                    success: function (data) {
+                        console.log(data);
+                    },
+                    error: function (data, textStatus, errorThrown) {
+                        console.log(data);
+                    },
+                });
+	          },
+	          onPending: function(result){
+	            /* You may add your own implementation here */
+	            console.log(result);
+                result.order_id = "{{$order->order_id}}";
+                $.ajax({
+                    type: "POST",
+                    url: "{{ route('order.pending.payment') }}",
+                    data: { data: result, _token: '{{csrf_token()}}' },
+                    success: function (data) {
+                        console.log(data);
+                    },
+                    error: function (data, textStatus, errorThrown) {
+                        console.log(data);
+                    },
+                });
+	          },
+	          onError: function(result){
+	            /* You may add your own implementation here */
+	            alert("payment failed!"); console.log(result);
+	          },
+	          onClose: function(){
+	            /* You may add your own implementation here */
+	            alert('you closed the popup without finishing the payment');
+	          }
+	        })
 		});
 	  </script>
 
