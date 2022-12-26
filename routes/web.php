@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\TheaterController;
 use App\Models\Movie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -48,27 +49,7 @@ Route::get('/cities', function () {
     return $cities;
 });
 
-Route::get('/theater/', function () {
-    // default city bandung theater ciwalk
-
-    $city_id = 2;
-    $cities = Movie::getCities();
-    $city = Movie::getCitiesId($city_id);
-    $theater = Movie::getTheaters($city_id);
-    $schedules = Movie::getSchedules($theater["XXI"][2]['id']);
-    $infotheater = $schedules['theater'];
-    $posts = $schedules['schedules'];
-
-    return view('page.theater', [
-        'title' => 'theater',
-        'active' => 'theater',
-        'theaters' => $theater,
-        'cities' => $cities,
-        'infotheater' => $infotheater,
-        'posts' => $posts,
-        'city' => $city,
-    ]);
-});
+Route::get('/theater/', [TheaterController::class, 'index']);
 
 
 Route::get('/schedules/{theater}', function ($theater) {
