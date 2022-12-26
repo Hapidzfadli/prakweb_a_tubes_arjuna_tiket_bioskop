@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Movie;
+use App\Models\Payment;
 use Illuminate\Http\Request;
 
 class OrderAjaxController extends Controller
@@ -29,5 +30,15 @@ class OrderAjaxController extends Controller
     {
         $schedules = Movie::getSchedulesDetail($request->theater_id, $request->movie_id);
         return $schedules;
+    }
+
+    public function pendingPayment(Request $request)
+    {
+        return Payment::pending($request);
+    }
+
+    public function successPayment(Request $request)
+    {
+        return Payment::success($request);
     }
 }
