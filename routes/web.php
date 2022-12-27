@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AjaxController;
 use App\Models\Movie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -82,5 +83,5 @@ Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallba
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
 Route::post('payments/midtrans-notification', [PaymentCallbackController::class, 'receive']);
-Route::post('search', [SearchController::class, 'index'])->name('search');
-Route::get('search?keyword={key}', [SearchController::class, 'index']);
+Route::post('search', [AjaxController::class, 'ajaxSearch'])->name('search');
+Route::get('search', [SearchController::class, 'index']);
