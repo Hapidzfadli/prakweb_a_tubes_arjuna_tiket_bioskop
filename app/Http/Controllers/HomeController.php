@@ -14,7 +14,7 @@ class HomeController extends Controller
         return view('index', [
             "title" => "Arjuna 21",
             'posts' => $posts,
-            "active" => 'active'
+            "active" => 'home'
         ]);
     }
 }

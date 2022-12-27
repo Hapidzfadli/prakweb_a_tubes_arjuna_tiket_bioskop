@@ -11,10 +11,10 @@ class UpcomingController extends Controller
     public function index()
     {
         $upcoming = Movie::getUpcoming();
-        return view ('page.upcoming', [
-            'title' => 'Upcoming', 
+        return view('page.upcoming', [
+            'title' => 'Upcoming',
             'active' => 'upcoming',
             'posts' => $upcoming
         ]);
-    } 
+    }
 }
