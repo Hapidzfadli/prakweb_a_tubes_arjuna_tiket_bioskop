@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminCustomer;
 use App\Http\Controllers\AjaxController;
 use App\Models\Movie;
 use Illuminate\Http\Request;
@@ -85,3 +86,5 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('aut
 Route::post('payments/midtrans-notification', [PaymentCallbackController::class, 'receive']);
 Route::post('search', [AjaxController::class, 'ajaxSearch'])->name('search');
 Route::get('search', [SearchController::class, 'index']);
+
+Route::resource('/dashboard/customers', AdminCustomer::class);
