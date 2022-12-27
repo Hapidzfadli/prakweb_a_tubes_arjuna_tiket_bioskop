@@ -16,9 +16,14 @@ class Payment extends Model
             'payment_type' => $result->data['payment_type'],
             'pdf_url' => $result->has('data.pdf_url') ? $result->data['pdf_url'] : null,
             'status_code' => $result->data['status_code'],
+            'order_id' => $result->order_id,
             'transaction_status' => $result->data['transaction_status'],
         ];
 
+        $signature_key = $result->data['order_id'] . $result->data['status_code'] . $result->data['gross_amount'] . env('MIDTRANS_SERVER_KEY');
+        $data['signature_key'] = hash("sha512", $signature_key);
+
+        Payment::create($data);
         return $data;
     }
 
