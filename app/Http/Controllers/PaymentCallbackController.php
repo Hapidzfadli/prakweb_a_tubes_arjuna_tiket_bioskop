@@ -9,43 +9,21 @@ use App\Services\Midtrans\CallbackService;
 
 class PaymentCallbackController extends Controller
 {
-    public function receive()
+    public function receive(Request $request)
     {
-        $callback = new CallbackService;
+        $json = json_decode($request->getContent());
 
-        if ($callback->isSignatureKeyVerified()) {
-            $notification = $callback->getNotification();
-            $order = $callback->getOrder();
+        $order = Payment::where('order_id', $json->order_id)->first();
 
-            if ($callback->isSuccess()) {
-                Payment::where('id', $order->id)->update([
-                    'transaction_status' => $notification->transaction_status,
-                ]);
-            }
-
-            if ($callback->isExpire()) {
-                Payment::where('id', $order->id)->update([
-                    'transaction_status' => 'expire',
-                ]);
-            }
-
-            if ($callback->isCancelled()) {
-                Payment::where('id', $order->id)->update([
-                    'transaction_status' => 'cancel',
-                ]);
-            }
-
-            return response()
-                ->json([
-                    'success' => true,
-                    'message' => 'Notifikasi berhasil diproses',
-                ]);
-        } else {
-            return response()
-                ->json([
-                    'error' => true,
-                    'message' => 'Signature key tidak terverifikasi',
-                ], 403);
+        if ($order == null) {
+            return abort(404);
         }
+
+        if ($order->signature_key != $json->signature_key) {
+            return abort(404);
+        }
+        return $order->update([
+            "transaction_status" => $json->transaction_status,
+        ]);
     }
 }

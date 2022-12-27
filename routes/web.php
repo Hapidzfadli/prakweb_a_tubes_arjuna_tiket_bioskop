@@ -100,3 +100,4 @@ Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallba
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
 Route::post('payments/midtrans-notification', [PaymentCallbackController::class, 'receive']);
+Route::get('payments/midtrans-notification', [PaymentCallbackController::class, 'receive']);
