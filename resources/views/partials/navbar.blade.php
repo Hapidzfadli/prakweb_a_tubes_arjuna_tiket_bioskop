@@ -20,7 +20,7 @@
       </ul>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link {{ ($active === "theaters") ? 'active' :  ''}}" aria-current="page" href="/theater/10">Theaters</a>
+          <a class="nav-link {{ ($active === "theaters") ? 'active' :  ''}}" aria-current="page" href="/theater">Theaters</a>
         </li>
       </ul>
       </ul>
