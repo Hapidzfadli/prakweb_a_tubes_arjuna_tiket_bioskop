@@ -19,7 +19,7 @@ class AdminCustomer extends Controller
         $auth = auth()->user();
         $users = User::latest('created_at')->paginate(6);
 
-        return view('dashboard.admin.customers', [
+        return view('dashboard.admin.customers.index', [
             'title' => 'Customers',
             'listnav' => $listnavitem,
             'auth' => $auth,
@@ -67,7 +67,16 @@ class AdminCustomer extends Controller
      */
     public function edit($id)
     {
-        return $id;
+        $listnavitem = Dashboard::getNav();
+        $auth = auth()->user();
+        $user = User::where('id', '=', $id)->first();
+
+        return view('dashboard.admin.customers.edit', [
+            'title' => 'Edit Customer',
+            'listnav' => $listnavitem,
+            'auth' => $auth,
+            'user' => $user,
+        ]);
     }
 
     /**
@@ -77,9 +86,24 @@ class AdminCustomer extends Controller
      * @param  \App\Models\Dashboard  $dashboard
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Dashboard $dashboard)
+    public function update($id, Request $request, Dashboard $dashboard)
     {
-        //
+        $user = User::where('id', '=', $id)->first();
+
+        $data = $request->validate([
+            'name' => 'required|max:255',
+            'username' => ($request->username == $user->username) ?  'required|min:3|max:255' : 'required|min:3|max:255|unique:users',
+            'email' => ($request->username == $user->username) ?  'required|email' : 'required|email|unique:users',
+            'address' => 'nullable|max:255',
+            'no_telphone' => 'nullable|max:255',
+        ]);
+        if ($request->file('image')) {
+            $data['image'] = $request->file('image')->store('img', ['disk' => 'img']);
+        }
+
+        User::where('id', '=', $id)->update($data);
+
+        return back()->with('messege', 'Customer has been updated!');
     }
 
     /**

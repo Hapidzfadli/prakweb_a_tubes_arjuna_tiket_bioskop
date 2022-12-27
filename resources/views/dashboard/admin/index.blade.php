@@ -121,7 +121,7 @@
                 </table>
             </div>
         </div>
-        <div class="recentCustomer col p-3">
+        <div class="recentCustomer col p-3 rounded">
             <div class="cardHeader d-flex justify-content-between">
                 <h5>Recent Customer</h5>
                 <a href="#" class="badge badge-primary bg-primary h-50">View All</a>

@@ -2,7 +2,7 @@
 
 @section('container')
 <div class="details row px-4 gap-3">
-    <div class="recentCustomer col p-3">
+    <div class="recentCustomer col p-3 rounded">
         <div class="cardHeader d-flex justify-content-between">
             <h5>Customer</h5>
             <a href="#" class="badge badge-primary bg-primary h-50">View All</a>
