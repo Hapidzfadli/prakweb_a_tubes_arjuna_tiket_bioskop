@@ -19,7 +19,7 @@ class TheaterController extends Controller
 
         return view('page.theater', [
             'title' => 'theater',
-            'active' => 'theater',
+            'active' => 'theaters',
             'theaters' => $theater,
             'cities' => $cities,
             'infotheater' => $infotheater,

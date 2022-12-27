@@ -23,10 +23,15 @@
           <a class="nav-link {{ ($active === "theaters") ? 'active' :  ''}}" aria-current="page" href="/theater">Theaters</a>
         </li>
       </ul>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link {{ ($active === "order") ? 'active' :  ''}}" aria-current="page" href="/order">Buy Tiket</a>
+        </li>
       </ul>
-      <form action="" class="d-flex" method="get">
-        <input class="keyword form-control me-2" type="text" placeholder="search movie, theater ..." aria-label="Search" size="20" name="keyword" autocomplete="off">
-        <button class="tombol-cari btn btn-outline-primary" type="submit" name="cari"><i class="fa fa-search"></i></button>
+      </ul>
+      <form action="/search" class="d-flex" method="get">
+        <input id="searchnav" class="keyword form-control me-2" type="text" placeholder="search movie, theater ..." name="keyword" aria-label="Search" size="20" autocomplete="off">
+        <button class="tombol-cari btn btn-primary" type="submit"><i class="fa fa-search"></i></button>
       </form>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 ml-lg-50">
         <li class="nav-item">
@@ -36,4 +41,34 @@
     </div>
   </div>
 </nav>
+
+<script>
+  $(document).ready(function(){
+    $('#searchnav').keyup(function() {
+        var value = $(this).val().toLowerCase();
+        var currUrl = window.location.pathname;
+        $.ajax({
+            type: "POST",
+            url: "{{route('search')}}",
+            data: { data: value, url: currUrl, _token: '{{csrf_token()}}' },
+            success: function (data) {
+              if(currUrl == '/') {
+                $('.cardindex').empty()
+                $.each(data, function(index, value){
+                $('.cardindex').append("<div class='col col-sm-2 col-md-4 col-lg-3 mb-4 mt-4'><a href='/movie/"+value.id+"' class='text-decoration-none text-black'><div class='card mx-auto'  style='height: 95%'><img src='"+value.bannerUrl+"' alt=''><div class='card-body'><h6 class='card-title text-center'>"+value.title+"</h6></div></div></a></div>");
+              });
+              } else if( currUrl == '/upcoming' ) {
+                $('.cardindex').empty()
+                $.each(data, function(index, value){
+                $('.cardindex').append("<div class='col col-sm-2 col-md-4 col-lg-3 mb-4 mt-4'><a href='#' class='text-decoration-none text-black'><div class='card mx-auto'  style='height: 95%'><img src='"+value.bannerUrl+"' alt=''><div class='card-body'><h6 class='card-title text-center'>"+value.title+"</h6></div></div></a></div>")
+              });
+              }
+            },
+            error: function (data, textStatus, errorThrown) {
+                console.log(data);
+            },
+        });
+    });
+});
+</script>
 <!-- akhir -->

@@ -8,7 +8,7 @@
 </div>
 
 {{-- <h1 class="upcoming mt-5" style="text-align: center">Upcoming</h1> --}}
-<div class="row pt-3">
+<div class="row cardindex pt-3">
     @foreach ($posts as $p)
     <div class="col col-sm-2 col-md-4 col-lg-3 mb-4 mt-4">
     <a href="#" class="text-decoration-none text-black">

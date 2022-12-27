@@ -18,7 +18,7 @@ class OrderController extends Controller
     {
         return view('order.index', [
             'title' => 'Pembayaran',
-            'active' => 'active',
+            'active' => 'order',
             "cities" => Movie::getCities(),
         ]);
     }

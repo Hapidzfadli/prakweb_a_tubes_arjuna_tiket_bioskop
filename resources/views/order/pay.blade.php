@@ -140,7 +140,6 @@
 	          },
 	          onClose: function(){
 	            /* You may add your own implementation here */
-	            alert('you closed the popup without finishing the payment');
 	          }
 	        })
 		});

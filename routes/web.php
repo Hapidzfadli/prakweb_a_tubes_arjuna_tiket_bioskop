@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AjaxController;
 use App\Models\Movie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -12,6 +13,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\OrderAjaxController;
 use App\Http\Controllers\PaymentCallbackController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\TheaterController;
 
 /*
@@ -81,4 +83,5 @@ Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallba
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
 Route::post('payments/midtrans-notification', [PaymentCallbackController::class, 'receive']);
-Route::get('payments/midtrans-notification', [PaymentCallbackController::class, 'receive']);
+Route::post('search', [AjaxController::class, 'ajaxSearch'])->name('search');
+Route::get('search', [SearchController::class, 'index']);
