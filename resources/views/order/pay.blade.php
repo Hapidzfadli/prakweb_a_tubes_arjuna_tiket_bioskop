@@ -13,7 +13,7 @@
 					<div class="col">
 						<div class="title-movie">
 							<h4 style="margin: 0;">{{$movie['title']}}</h4>
-							<p style="color: rgba(128, 128, 128, 0.738);margin: 0;">#{{$order->order_id}}</p>
+							<p class="order_id" style="color: rgba(128, 128, 128, 0.738);margin: 0;">#{{$order->order_id}}</p>
 							<hr class="my-1">
 							<p style="font-size: 0.8rem">{{substr_replace($movie['description'], "...", 150);}}</p>
 						</div>
@@ -121,11 +121,11 @@
 	          onPending: function(result){
 	            /* You may add your own implementation here */
 	            console.log(result);
-                result.order_id = "{{$order->order_id}}";
+                var orderid = "{{$order->order_id}}";
                 $.ajax({
                     type: "POST",
                     url: "{{ route('order.pending.payment') }}",
-                    data: { data: result, _token: '{{csrf_token()}}' },
+                    data: { data: result, order_id : orderid, _token: '{{csrf_token()}}' },
                     success: function (data) {
                         console.log(data);
                     },
