@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Dashboard;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AdminCustomer extends Controller
@@ -14,7 +15,16 @@ class AdminCustomer extends Controller
      */
     public function index()
     {
-        //
+        $listnavitem = Dashboard::getNav();
+        $auth = auth()->user();
+        $users = User::latest('created_at')->paginate(6);
+
+        return view('dashboard.admin.customers', [
+            'title' => 'Customers',
+            'listnav' => $listnavitem,
+            'auth' => $auth,
+            'users' => $users,
+        ]);
     }
 
     /**
@@ -55,9 +65,9 @@ class AdminCustomer extends Controller
      * @param  \App\Models\Dashboard  $dashboard
      * @return \Illuminate\Http\Response
      */
-    public function edit(Dashboard $dashboard)
+    public function edit($id)
     {
-        //
+        return $id;
     }
 
     /**

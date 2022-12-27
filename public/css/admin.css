@@ -331,6 +331,13 @@ body {
     color: #4b1b1b;
 }
 
+a.badge-delete:hover {
+    background: rgb(244, 87, 87) !important;
+}
+a.badge-edit:hover {
+    background: rgb(178, 178, 0) !important;
+}
+
 /* // Small devices (landscape phones, 576px and up) */
 @media (max-width: 576px) { 
     .name {
