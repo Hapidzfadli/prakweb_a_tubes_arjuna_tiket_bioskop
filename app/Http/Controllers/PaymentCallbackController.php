@@ -24,6 +24,7 @@ class PaymentCallbackController extends Controller
         }
         return $order->update([
             "transaction_status" => $json->transaction_status,
+            "status_code" => $json->status_code,
         ]);
     }
 }
