@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Dashboard;
+use App\Models\Order;
 use Illuminate\Http\Request;
 
-class MemberOrders extends Controller
+class MemberTiketController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,14 +17,14 @@ class MemberOrders extends Controller
     {
         $listnavitem = Dashboard::getNavUser();
         $auth = auth()->user();
-        $orders = Dashboard::getRecentOrder();
-        $ordersMember = $orders->where('user_id', '=', $auth->id);
+        $tiket = Dashboard::getSales()->where('user_id', '=', $auth->id);
 
-        return view('dashboard.member.order.index', [
+
+        return view('dashboard.member.tiket.index', [
             'title' => 'Dashboard',
             'listnav' => $listnavitem,
             'auth' => $auth,
-            'orders' => $ordersMember,
+            'tiket' => $tiket
         ]);
     }
 
