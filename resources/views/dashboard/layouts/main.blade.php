@@ -41,7 +41,7 @@
                         <p  class="m-0 p-0">{{$auth->email}}</p>
                     </div>
                     <div class="img">
-                        <img src="{{$auth->image}}" alt="">
+                        <img src="/{{$auth->image}}" alt="">
                     </div>
                 </div>
             </div>
