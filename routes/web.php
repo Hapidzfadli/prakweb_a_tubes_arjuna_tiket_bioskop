@@ -12,6 +12,7 @@ use App\Http\Controllers\DetailController;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\MemberOrders;
 use App\Http\Controllers\OrderAjaxController;
 use App\Http\Controllers\PaymentCallbackController;
 use App\Http\Controllers\SearchController;
@@ -88,3 +89,4 @@ Route::post('search', [AjaxController::class, 'ajaxSearch'])->name('search');
 Route::get('search', [SearchController::class, 'index']);
 
 Route::resource('/dashboard/customers', AdminCustomer::class);
+Route::resource('/dashboard/member/orders', MemberOrders::class);
