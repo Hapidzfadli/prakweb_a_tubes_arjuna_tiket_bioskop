@@ -79,4 +79,43 @@ class Dashboard extends Model
         ];
         return $navbar;
     }
+
+    public static function getNavUser()
+    {
+        $navbar = [
+            [
+                'title' => 'Dashboard',
+                'icon' => 'home-outline',
+                'link' => '/dashboard'
+            ],
+            [
+                'title' => 'Orders',
+                'icon' => 'chatbubble-outline',
+                'link' => '/dashboard/member/orders'
+            ],
+            [
+                'title' => 'Ticket',
+                'icon' => 'ticket-outline',
+                'link' => '/dashboard/tiket'
+            ],
+            [
+                'title' => 'Setting',
+                'icon' => 'settings-outline',
+                'link' => '/dashboard/setting'
+            ],
+            [
+                'title' => 'Password',
+                'icon' => 'lock-closed-outline',
+                'link' => '/dashboard/password'
+
+            ],
+            [
+                'title' => 'Sign Out',
+                'icon' => 'log-out',
+                'link' => '/logout'
+            ],
+        ];
+
+        return $navbar;
+    }
 }
