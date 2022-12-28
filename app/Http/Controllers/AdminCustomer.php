@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Dashboard;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class AdminCustomer extends Controller
 {
@@ -112,8 +113,16 @@ class AdminCustomer extends Controller
      * @param  \App\Models\Dashboard  $dashboard
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Dashboard $dashboard)
+    public function destroy($id, Dashboard $dashboard)
     {
-        //
+        $user = User::where('id', '=', $id)->first();
+        // if ($user->image != 'img/man1.png' && $user->image != 'img/man2.png' && $user->image != 'img/man.png' && $user->image != 'img/woman.png') {
+        //     if (File::exists(public_path($user->image))) {
+        //         File::delete(public_path($user->image));
+        //     }
+        // }
+        User::destroy($user->id);
+
+        return back()->with('messege', 'Customer has been deleted!');
     }
 }
