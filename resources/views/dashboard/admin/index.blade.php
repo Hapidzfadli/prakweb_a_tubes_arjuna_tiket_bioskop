@@ -25,16 +25,18 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-6">
-                <div class="row">
-                    <div class="col-8">
-                        <h2 class="number-stats">{{count($users)}}</h2>
-                        <div class="name-stats">Users</div>
+            <div class="col-lg-3 col-6 ">
+                <a href="/dashboard/customers" class="text-decoration-none">
+                    <div class="row" style="cursor: pointer !important">
+                        <div class="col-8">
+                            <h2 class="number-stats">{{count($users)}}</h2>
+                            <div class="name-stats">Users</div>
+                        </div>
+                        <div class="col-4 icon-stats">
+                            <ion-icon name="people-outline"></ion-icon>
+                        </div>
                     </div>
-                    <div class="col-4 icon-stats">
-                        <ion-icon name="people-outline"></ion-icon>
-                    </div>
-                </div>
+                </a>
             </div>
             <div class="col-lg-3 col-6">
                 <div class="row">
@@ -71,7 +73,7 @@
                         <tr>
                             <td>
                                 <div class="d-flex align-items-center">
-                                    <img src="{{$order->user->image}}" alt="" style="width: 45px; height: 45px;" class="rounded-circle">
+                                    <img src="/{{$order->user->image}}" alt="" style="width: 45px; height: 45px;" class="rounded-circle">
                                     <div class="ms-3">
                                         <p class="fw-bold mb-1">{{$order->user->name}}</p>
                                         <p class="text-muted mb-0">{{$order->user->email}}</p>
@@ -121,10 +123,10 @@
                 </table>
             </div>
         </div>
-        <div class="recentCustomer col p-3">
+        <div class="recentCustomer col p-3 rounded">
             <div class="cardHeader d-flex justify-content-between">
                 <h5>Recent Customer</h5>
-                <a href="#" class="badge badge-primary bg-primary h-50">View All</a>
+                <a href="/dashboard/customers" class="badge badge-primary bg-primary h-50">View All</a>
             </div>
             <div class="table-customer">
                 <table class="table align-middle mb-0 bg-white">
@@ -138,7 +140,7 @@
                             <tr>
                                 <td>
                                     <div class="d-flex align-items-center">
-                                        <img src="{{$user->image}}" alt="" style="width: 45px; height: 45px;" class="rounded-circle">
+                                        <img src="/{{$user->image}}" alt="" style="width: 45px; height: 45px;" class="rounded-circle">
                                         <div class="ms-3">
                                             <p class="fw-bold mb-1">{{$user->name}}</p>
                                             <p class="text-muted mb-0">{{$user->email}}</p>

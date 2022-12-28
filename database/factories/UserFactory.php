@@ -17,7 +17,7 @@ class UserFactory extends Factory
      */
     public function definition()
     {
-        $img = ['/img/user.png', '/img/man1.png', '/img/man2.png', '/img/woman.png'];
+        $img = ['img/man.png', 'img/man1.png', 'img/man2.png', 'img/woman.png'];
         $rand = mt_rand(0, 3);
         return [
             'name' => fake()->name(),

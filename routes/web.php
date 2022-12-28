@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\AdminCustomer;
+use App\Http\Controllers\AjaxController;
 use App\Models\Movie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -10,7 +11,12 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\DetailController;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\MemberOrders;
 use App\Http\Controllers\OrderAjaxController;
+use App\Http\Controllers\PaymentCallbackController;
+use App\Http\Controllers\SearchController;
+use App\Http\Controllers\TheaterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,27 +54,7 @@ Route::get('/cities', function () {
     return $cities;
 });
 
-Route::get('/theater/', function () {
-    // default city bandung theater ciwalk
-
-    $city_id = 2;
-    $cities = Movie::getCities();
-    $city = Movie::getCitiesId($city_id);
-    $theater = Movie::getTheaters($city_id);
-    $schedules = Movie::getSchedules($theater["XXI"][2]['id']);
-    $infotheater = $schedules['theater'];
-    $posts = $schedules['schedules'];
-
-    return view('page.theater', [
-        'title' => 'theater',
-        'active' => 'theater',
-        'theaters' => $theater,
-        'cities' => $cities,
-        'infotheater' => $infotheater,
-        'posts' => $posts,
-        'city' => $city,
-    ]);
-});
+Route::get('/theater/', [TheaterController::class, 'index']);
 
 
 Route::get('/schedules/{theater}', function ($theater) {
@@ -98,3 +84,9 @@ Route::get('auth/google', [GoogleController::class, 'redirectToGoogle']);
 Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
+Route::post('payments/midtrans-notification', [PaymentCallbackController::class, 'receive']);
+Route::post('search', [AjaxController::class, 'ajaxSearch'])->name('search');
+Route::get('search', [SearchController::class, 'index']);
+
+Route::resource('/dashboard/customers', AdminCustomer::class);
+Route::resource('/dashboard/member/orders', MemberOrders::class);
