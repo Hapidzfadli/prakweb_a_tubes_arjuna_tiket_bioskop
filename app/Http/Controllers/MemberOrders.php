@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Dashboard;
+use App\Models\Order;
 use Illuminate\Http\Request;
 
 class MemberOrders extends Controller
@@ -17,13 +18,12 @@ class MemberOrders extends Controller
         $listnavitem = Dashboard::getNavUser();
         $auth = auth()->user();
         $orders = Dashboard::getRecentOrder();
-        $ordersMember = $orders->where('user_id', '=', $auth->id);
-
+        $ordersMember = Order::with('user', 'payment')->latest('created_at')->paginate(6);
 
         return view('dashboard.member.order.index', [
             'title' => 'Dashboard',
             'listnav' => $listnavitem,
-            'users' => $auth,
+            'auth' => $auth,
             'orders' => $ordersMember,
         ]);
     }

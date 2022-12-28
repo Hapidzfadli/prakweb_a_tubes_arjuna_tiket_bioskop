@@ -13,12 +13,14 @@ class DashboardController extends Controller
     public function index()
     {
 
-        $orders = Dashboard::getRecentOrder();
         $users = User::latest('created_at')->get();
         $earning = Dashboard::getEarning();
         $sales = Dashboard::getSales();
         $auth = auth()->user();
+        $orders = Dashboard::getRecentOrder();
         $ordersMember = $orders->where('user_id', '=', $auth->id);
+
+        count($orders);
 
         if ($auth->is_admin) {
             $listnavitem = Dashboard::getNav();
