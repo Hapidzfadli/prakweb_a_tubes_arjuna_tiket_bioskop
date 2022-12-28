@@ -55,5 +55,36 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 
 <script src="/js/admin.js"></script>
+
+<script>
+    $(document).ready(function(){
+        $('#search').keyup(function() {
+            var value = $(this).val().toLowerCase();
+            var currUrl = window.location.pathname;
+
+            var row = $("table tbody");
+            console.log(row);
+            $.ajax({
+                type: "POST",
+                url: "{{route('search')}}",
+                data: { data: value, url: currUrl, _token: '{{csrf_token()}}' },
+                success: function (data) {
+                    if(currUrl == '/dashboard/customers'){
+                        row.empty()
+                        var method = '@method('DELETE') @csrf';
+                        $.each(data, function(index, value){
+                            row.append("<tr><td><div class='d-flex align-items-center'><img src='/"+value.image+"' alt='' style='width: 45px; height: 45px;' class='rounded-circle'><div class='ms-3'><p class='fw-bold mb-1'>"+value.name+"</p><p class='text-muted mb-0'>"+value.email+"</p></div></div></td><td><p class='text-muted mb-0'>"+value.username+"</p></td><td><p class='text-muted mb-0'>"+value.no_telphone+"</p></td><td><p class='text-muted mb-0'>"+value.address+"</p></td><td><div class='row w-100'><div class='col-lg-6'><form action='/dashboard/customers/"+value.id+"' method='POST'>"+ method +"<button type='submit' onclick='return confirm('Are you sure?')' class='badge badge-delete text-white bg-danger rounded-pill d-inline'>delete</button></form></div><div class='col-lg-6'><a href='/dashboard/customers/"+value.id+"/edit' class='badge badge-edit text-white bg-warning rounded-pill d-inline'>edit</a></div></div></td></tr>")
+                        });
+                        
+                    }
+                }
+                ,
+                error: function (data, textStatus, errorThrown) {
+                    console.log(data);
+                },
+            });
+        });
+    })
+</script>
 </body>
 </html>
