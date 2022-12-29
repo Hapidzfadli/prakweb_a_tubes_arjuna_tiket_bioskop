@@ -57,7 +57,17 @@ class MemberOrders extends Controller
      */
     public function show($id)
     {
-        //
+        // return $id;
+        $listnavitem = Dashboard::getNavUser();
+        $auth = auth()->user();
+        $ordersMember = Order::with('user', 'payment')->latest('created_at')->paginate(6);
+
+        return view('dashboard.member.order.show', [
+            'title' => 'Dashboard',
+            'listnav' => $listnavitem,
+            'auth' => $auth,
+            'orders' => $ordersMember,
+        ]);
     }
 
     /**

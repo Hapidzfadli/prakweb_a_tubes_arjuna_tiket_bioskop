@@ -77,12 +77,6 @@
                         });
                         
                     } 
-                    // else if (currUrl == '/dashboard/member/orders') {
-                    //     row.empty()
-                    //     $.each(data, function(index, value){
-                    //         row.append("<tr><td><divclass='d-flexalign-items-center'><imgsrc='/{{$auth->image}}'alt=''style='width:45px;height:45px;'class='rounded-circle'><divclass='ms-3'><pclass='fw-boldmb-1'>{{$auth->name}}</p><pclass='text-mutedmb-0'>{{$auth->email}}</p></div></div></td><td><pclass='text-mutedmb-0'>{{$order->movie}}</p></td><td><pclass='fw-normalmb-1'>{{number_format($order->total_price,0,'.','.');}}</p></td><td>@if($order->payment!=null)@if($order->payment->transaction_status=='settlement')<spanclass='badgebg-successrounded-pilld-inline'>{{$order->payment->transaction_status}}</span>@elseif($order->payment->transaction_status=='pending')<spanclass='badgebg-warningrounded-pilld-inline'>{{$order->payment->transaction_status}}</span>@elseif($order->payment->transaction_status=='return')<spanclass='badgebg-primaryrounded-pilld-inline'>{{$order->payment->transaction_status}}</span>@elseif($order->payment->transaction_status=='cencel')<spanclass='badgebg-dangerrounded-pilld-inline'>{{$order->payment->transaction_status}}</span>@else<spanclass='badgebg-dangerrounded-pilld-inline'>{{$order->payment->transaction_status}}</span>@endif@else<spanclass='badgebg-inforounded-pilld-inline'>inProgres</span>@endif</td></tr>")
-                    //     });
-                    // }
                 }
                 ,
                 error: function (data, textStatus, errorThrown) {

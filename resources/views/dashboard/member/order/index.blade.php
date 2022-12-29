@@ -30,6 +30,7 @@
                         <th>Movie</th>
                         <th>Price</th>
                         <th>Status</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -74,12 +75,30 @@
                                         {{$order->payment->transaction_status}}
                                     </span>
                                     @endif
-                                
                                 @else
                                 <span class="badge bg-info rounded-pill d-inline">
                                     inProgres 
                                 </span>
                                 @endif
+                            </td>
+                            <td>
+                                <div class="row w-100">
+                                    <div class="col-lg-6">
+                                        <form action="/dashboard/member/orders/{{{$order->order_id}}}" method="POST">
+                                            @method('DELETE')
+                                            @csrf
+                                            <button type="submit" onclick="return confirm('Are you sure?')" class="badge badge-delete text-white bg-danger rounded-pill d-inline">
+                                                delete
+                                            </button>               
+                                        </form> 
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <a href="/dashboard/member/orders/{{{$order->order_id}}}" class="badge badge-edit text-white bg-primary rounded-pill d-inline">
+                                            views
+                                        </a>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                     @endforeach
