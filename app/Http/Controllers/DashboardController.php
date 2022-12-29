@@ -31,6 +31,7 @@ class DashboardController extends Controller
                 'auth' => $auth,
             ]);
         } else {
+            $listnavitem = Dashboard::getNavUser();
             return view('dashboard.member.index', [
                 'title' => 'Dashboard',
                 'listnav' => $listnavitem,
