@@ -20,7 +20,7 @@ class Dashboard extends Model
         $value = 'settlement';
         $orders = Order::with('payment:order_id,transaction_status,gross_amount')->whereHas('payment', function ($q) use ($value) {
             $q->where('transaction_status', '=', $value);
-        })->get('payment_id');
+        })->get();
 
         return $orders;
     }
@@ -96,7 +96,7 @@ class Dashboard extends Model
             [
                 'title' => 'Ticket',
                 'icon' => 'ticket-outline',
-                'link' => '/dashboard/tiket'
+                'link' => '/dashboard/member/tiket'
             ],
             [
                 'title' => 'Setting',

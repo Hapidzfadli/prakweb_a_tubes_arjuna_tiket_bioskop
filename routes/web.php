@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminCustomer;
 use App\Http\Controllers\AjaxController;
+use App\Http\Controllers\SettingController;
 use App\Models\Movie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -13,6 +14,7 @@ use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MemberOrders;
+use App\Http\Controllers\MemberTiketController;
 use App\Http\Controllers\OrderAjaxController;
 use App\Http\Controllers\PaymentCallbackController;
 use App\Http\Controllers\SearchController;
@@ -90,3 +92,5 @@ Route::get('search', [SearchController::class, 'index']);
 
 Route::resource('/dashboard/customers', AdminCustomer::class);
 Route::resource('/dashboard/member/orders', MemberOrders::class);
+Route::resource('/dashboard/member/tiket', MemberTiketController::class);
+Route::resource('/dashboard/setting', SettingController::class);
