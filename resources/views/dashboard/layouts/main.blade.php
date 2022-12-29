@@ -76,7 +76,7 @@
                             row.append("<tr><td><div class='d-flex align-items-center'><img src='/"+value.image+"' alt='' style='width: 45px; height: 45px;' class='rounded-circle'><div class='ms-3'><p class='fw-bold mb-1'>"+value.name+"</p><p class='text-muted mb-0'>"+value.email+"</p></div></div></td><td><p class='text-muted mb-0'>"+value.username+"</p></td><td><p class='text-muted mb-0'>"+value.no_telphone+"</p></td><td><p class='text-muted mb-0'>"+value.address+"</p></td><td><div class='row w-100'><div class='col-lg-6'><form action='/dashboard/customers/"+value.id+"' method='POST'>"+ method +"<button type='submit' onclick='return confirm('Are you sure?')' class='badge badge-delete text-white bg-danger rounded-pill d-inline'>delete</button></form></div><div class='col-lg-6'><a href='/dashboard/customers/"+value.id+"/edit' class='badge badge-edit text-white bg-warning rounded-pill d-inline'>edit</a></div></div></td></tr>")
                         });
                         
-                    }
+                    } 
                 }
                 ,
                 error: function (data, textStatus, errorThrown) {

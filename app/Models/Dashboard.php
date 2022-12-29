@@ -115,7 +115,6 @@ class Dashboard extends Model
                 'link' => '/logout'
             ],
         ];
-
         return $navbar;
     }
 }
