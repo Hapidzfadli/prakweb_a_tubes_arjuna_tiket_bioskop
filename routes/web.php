@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminCustomer;
 use App\Http\Controllers\AjaxController;
+use App\Http\Controllers\SettingController;
 use App\Models\Movie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -92,3 +93,4 @@ Route::get('search', [SearchController::class, 'index']);
 Route::resource('/dashboard/customers', AdminCustomer::class);
 Route::resource('/dashboard/member/orders', MemberOrders::class);
 Route::resource('/dashboard/member/tiket', MemberTiketController::class);
+Route::resource('/dashboard/setting', SettingController::class);
