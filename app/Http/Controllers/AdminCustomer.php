@@ -116,11 +116,6 @@ class AdminCustomer extends Controller
     public function destroy($id, Dashboard $dashboard)
     {
         $user = User::where('id', '=', $id)->first();
-        // if ($user->image != 'img/man1.png' && $user->image != 'img/man2.png' && $user->image != 'img/man.png' && $user->image != 'img/woman.png') {
-        //     if (File::exists(public_path($user->image))) {
-        //         File::delete(public_path($user->image));
-        //     }
-        // }
         User::destroy($user->id);
 
         return back()->with('messege', 'Customer has been deleted!');

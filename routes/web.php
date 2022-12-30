@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminCustomer;
+use App\Http\Controllers\AdminOrderController;
 use App\Http\Controllers\AjaxController;
 use App\Models\Movie;
 use Illuminate\Http\Request;
@@ -92,3 +93,4 @@ Route::get('search', [SearchController::class, 'index']);
 Route::resource('/dashboard/customers', AdminCustomer::class);
 Route::resource('/dashboard/member/orders', MemberOrders::class);
 Route::resource('/dashboard/member/tiket', MemberTiketController::class);
+Route::resource('/dashboard/orders', AdminOrderController::class);
