@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Dashboard;
 use App\Models\Order;
 use App\Models\User;
+use Illuminate\Support\Carbon;
 
 
 class AdminOrderController extends Controller
@@ -60,7 +61,21 @@ class AdminOrderController extends Controller
      */
     public function show($id)
     {
-        //
+        $listnavitem = Dashboard::getNav();
+        $auth = auth()->user();
+        $details = Dashboard::getRecentOrder()->where('order_id', '=', $id)->first();
+
+        $ppn = ($details->total_price / 100) * 11;
+        $price = floor($details->total_price - $ppn);
+
+        return view('dashboard.admin.orders.show', [
+            'title' => 'Details Order',
+            'listnav' => $listnavitem,
+            'auth' => $auth,
+            'detail' => $details,
+            'ppn' => $ppn,
+            'price' => $price
+        ]);
     }
 
     /**

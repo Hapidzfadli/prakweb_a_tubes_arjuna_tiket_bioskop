@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
-<div class="details row px-4 gap-3 position-relative">
+<div class="details mt-2 row px-4 gap-3 position-relative">
     @if (session()->has('messege'))
           <div style="left: 50%;
           transform: translateX(-50%); z-index: 100 !important; position: absolute;" class="w-50 top-0 z-30 alert alert-success alert-dismissible fade show" role="alert">
@@ -9,7 +9,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
           </div> 
         @endif
-        <div class="recentOrders col-12 p-3 rounded">
+        <div class="recentOrders col-12 p-3">
             <div class="cardHeader d-flex justify-content-between">
                 <h5>Recent Orders</h5>
                 <div class="search" style="width: 200px; height: 40px; padding-bottom: 8px;">

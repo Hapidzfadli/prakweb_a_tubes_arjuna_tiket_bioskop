@@ -10,9 +10,10 @@
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^9.19|^8.75",
         "laravel/sanctum": "^3.0",
+        "laravel/socialite": "*",
         "laravel/tinker": "^2.7",
         "midtrans/midtrans-php": "^2.5",
-        "laravel/socialite": "*"
+        "nesbot/carbon": "^2.64"
     },
     "require-dev": {
         "laravel/pint": "^1.0",

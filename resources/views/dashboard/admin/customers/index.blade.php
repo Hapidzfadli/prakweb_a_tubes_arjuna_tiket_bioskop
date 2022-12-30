@@ -9,7 +9,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
           </div> 
         @endif
-    <div class="recentCustomer col p-3 rounded">
+    <div class="recentCustomer col p-3 ">
         <div class="cardHeader d-flex justify-content-between">
             <h5>Customer</h5>
             <div class="search" style="width: 200px; height: 40px; padding-bottom: 8px;">
