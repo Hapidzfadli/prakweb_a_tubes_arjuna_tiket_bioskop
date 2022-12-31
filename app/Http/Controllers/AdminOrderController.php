@@ -113,4 +113,28 @@ class AdminOrderController extends Controller
         Order::destroy($order->order_id);
         return back()->with('messege', 'Order has been deleted!');
     }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function pdf($id)
+    {
+        $listnavitem = Dashboard::getNav();
+        $auth = auth()->user();
+        $details = Dashboard::getRecentOrder()->where('order_id', '=', $id)->first();
+
+        $ppn = ($details->total_price / 100) * 11;
+        $price = floor($details->total_price - $ppn);
+
+        return view('dashboard.admin.orders.preview', [
+            'title' => 'Details Order',
+            'listnav' => $listnavitem,
+            'auth' => $auth,
+            'detail' => $details,
+            'ppn' => $ppn,
+            'price' => $price
+        ]);
+    }
 }

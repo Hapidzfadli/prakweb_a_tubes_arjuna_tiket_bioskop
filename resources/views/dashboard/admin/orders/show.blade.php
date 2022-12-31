@@ -134,7 +134,7 @@
                     <hr style="color: rgb(179, 176, 176)">
                     <div class="row">
                         <div class="col">
-                            <a href="" class="text-decoration-none">
+                            <a href="{{route('pdf', $detail->order_id)}}" class="text-decoration-none">
                                 <p class="py-2 px-3 my-1 btn-info btn text-center w-100" style="color: white; border-radius: 20px; cursor: pointer;">Preview</p>
                             </a>
                             
