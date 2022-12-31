@@ -101,12 +101,12 @@ class Dashboard extends Model
             [
                 'title' => 'Setting',
                 'icon' => 'settings-outline',
-                'link' => '/dashboard/setting'
+                'link' => '/dashboard/member/setting'
             ],
             [
                 'title' => 'Password',
                 'icon' => 'lock-closed-outline',
-                'link' => '/dashboard/password'
+                'link' => '/dashboard/member/password'
 
             ],
             [

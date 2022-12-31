@@ -16,14 +16,11 @@ class SettingController extends Controller
     public function index()
     {
         $auth = auth()->user();
-
-
         if ($auth->is_admin) {
             $listnavitem = Dashboard::getNav();
-            return view('dashboard.admin.setting', [
+            return view('dashboard.admin.setting.index', [
                 'title' => 'Dashboard',
                 'listnav' => $listnavitem,
-
                 'auth' => $auth,
             ]);
         } else {
