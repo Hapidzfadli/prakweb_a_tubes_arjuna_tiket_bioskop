@@ -140,7 +140,7 @@
                             
                         </div>
                         <div class="col">
-                            <a href="" class="text-decoration-none">
+                            <a href="{{route('down.pdf', $detail->order_id)}}" class="text-decoration-none">
                                 <p class="py-2 px-3 my-1 btn-info btn text-center w-100" style="color: white; border-radius: 20px; cursor: pointer;">Download</p>
                             </a>
                         </div>
