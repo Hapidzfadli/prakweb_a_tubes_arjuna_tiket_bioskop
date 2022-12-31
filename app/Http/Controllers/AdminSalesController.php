@@ -61,7 +61,21 @@ class AdminSalesController extends Controller
      */
     public function show($id)
     {
-        //
+        $listnavitem = Dashboard::getNav();
+        $auth = auth()->user();
+        $details = Dashboard::getRecentOrder()->where('order_id', '=', $id)->first();
+
+        $ppn = ($details->total_price / 100) * 11;
+        $price = floor($details->total_price - $ppn);
+
+        return view('dashboard.admin.sales.show', [
+            'title' => 'Details Order',
+            'listnav' => $listnavitem,
+            'auth' => $auth,
+            'detail' => $details,
+            'ppn' => $ppn,
+            'price' => $price
+        ]);
     }
 
     /**
