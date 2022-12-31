@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Dashboard;
+use App\Models\Movie;
 use App\Models\Order;
 use Illuminate\Http\Request;
 
@@ -17,14 +18,17 @@ class MemberTiketController extends Controller
     {
         $listnavitem = Dashboard::getNavUser();
         $auth = auth()->user();
-        $tiket = Dashboard::getSales()->where('user_id', '=', $auth->id);
+        $value = 'settlement';
+        $tiket = Order::with('payment:order_id,transaction_status,gross_amount')->whereHas('payment', function ($q) use ($value) {
+            $q->where('transaction_status', '=', $value);
+        })->where('user_id', '=', $auth->id)->paginate(6);
 
 
         return view('dashboard.member.tiket.index', [
             'title' => 'Dashboard',
             'listnav' => $listnavitem,
             'auth' => $auth,
-            'tiket' => $tiket
+            'tiket' => $tiket,
         ]);
     }
 

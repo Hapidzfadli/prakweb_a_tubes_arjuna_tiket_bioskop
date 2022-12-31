@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Dashboard;
-use App\Models\Order;
 use Illuminate\Http\Request;
-
-class MemberOrders extends Controller
+use App\Models\Dashboard;
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
+class PasswordController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,17 +15,23 @@ class MemberOrders extends Controller
      */
     public function index()
     {
-        $listnavitem = Dashboard::getNavUser();
         $auth = auth()->user();
-        $orders = Dashboard::getRecentOrder();
-        $ordersMember = Order::with('user', 'payment')->latest('created_at')->paginate(6);
 
-        return view('dashboard.member.order.index', [
-            'title' => 'Dashboard',
-            'listnav' => $listnavitem,
-            'auth' => $auth,
-            'orders' => $ordersMember,
-        ]);
+        if ($auth->is_admin) {
+            $listnavitem = Dashboard::getNav();
+            return view('dashboard.admin.password.index', [
+                'title' => 'Dashboard',
+                'listnav' => $listnavitem,
+                'auth' => $auth,
+            ]);
+        } else {
+            $listnavitem = Dashboard::getNavUser();
+            return view('dashboard.member.password.index', [
+                'title' => 'Dashboard',
+                'listnav' => $listnavitem,
+                'auth' => $auth,
+            ]);
+        }
     }
 
     /**
@@ -57,17 +63,7 @@ class MemberOrders extends Controller
      */
     public function show($id)
     {
-        // return $id;
-        $listnavitem = Dashboard::getNavUser();
-        $auth = auth()->user();
-        $ordersMember = Order::with('user', 'payment')->latest('created_at')->paginate(6);
-
-        return view('dashboard.member.order.show', [
-            'title' => 'Dashboard',
-            'listnav' => $listnavitem,
-            'auth' => $auth,
-            'orders' => $ordersMember,
-        ]);
+        //
     }
 
     /**
@@ -90,7 +86,17 @@ class MemberOrders extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+        if(password_verify($request->oldpassword, auth()->user()->password)) {
+            if($request->newpassword == $request->repassword) {
+                User::find(auth()->user()->id)->update(['password'=> Hash::make($request->newpassword)]);
+                return back()->with('messege', 'Password has been updated!');
+            } else {
+                return back()->with('messege', 'Confirm password invalid');
+            }
+        } else {
+            return back()->with('messege', 'Password Invalid');
+        }
     }
 
     /**

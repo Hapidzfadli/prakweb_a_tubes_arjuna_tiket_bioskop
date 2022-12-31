@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Dashboard;
 use Illuminate\Http\Request;
 use App\Models\Movie;
+use App\Models\Order;
 use App\Models\User;
 
 class AjaxController extends Controller
@@ -38,5 +39,10 @@ class AjaxController extends Controller
 
             return $orders;
         }
+        // } elseif ($request->url == '/dashboard/member/orders') {
+        //     $order = Dashboard::getRecentOrder()->where('user_id', '=', auth()->user()->id)->filter(function($item) use ($title) {
+        //         return false !== stristr($item['name'], $title) || false != stristr()
+        //     }); 
+
     }
 }

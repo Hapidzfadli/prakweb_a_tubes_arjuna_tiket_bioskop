@@ -12,15 +12,18 @@ class DashboardController extends Controller
     //
     public function index()
     {
-        $listnavitem = Dashboard::getNav();
-        $orders = Dashboard::getRecentOrder();
+
         $users = User::latest('created_at')->get();
         $earning = Dashboard::getEarning();
         $sales = Dashboard::getSales();
         $auth = auth()->user();
+        $orders = Dashboard::getRecentOrder();
         $ordersMember = $orders->where('user_id', '=', $auth->id);
 
+        count($orders);
+
         if ($auth->is_admin) {
+            $listnavitem = Dashboard::getNav();
             return view('dashboard.admin.index', [
                 'title' => 'Dashboard',
                 'listnav' => $listnavitem,
@@ -31,6 +34,7 @@ class DashboardController extends Controller
                 'auth' => $auth,
             ]);
         } else {
+            $listnavitem = Dashboard::getNavUser();
             return view('dashboard.member.index', [
                 'title' => 'Dashboard',
                 'listnav' => $listnavitem,
