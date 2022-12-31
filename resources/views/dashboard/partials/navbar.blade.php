@@ -2,8 +2,8 @@
     <ul>
         <li>
             <a href="">
-                <span class="icon"><ion-icon name="videocam-outline"></ion-icon></span>
-                <span class="title">Arjuna21</span>
+                <span class="icon"><img src="/img/logo.jpg" alt="" style="width: 40px; height: 40px;" class="rounded-circle"></span>
+                <span class="title mt-1">Arjuna21</span>
             </a>
         </li>
         @foreach ($listnav as $navtitle)

@@ -17,9 +17,10 @@ class Dashboard extends Model
 
     public static function getSales()
     {
-        $value = 'settlement';
-        $orders = Order::with('payment:order_id,transaction_status,gross_amount')->whereHas('payment', function ($q) use ($value) {
-            $q->where('transaction_status', '=', $value);
+        $settlement = 'settlement';
+        $capture = 'capture';
+        $orders = Order::with('payment:order_id,transaction_status,gross_amount')->whereHas('payment', function ($q) use ($settlement, $capture) {
+            $q->where('transaction_status', '=', $settlement)->orWhere('transaction_status', '=', $capture);;
         })->get();
 
         return $orders;

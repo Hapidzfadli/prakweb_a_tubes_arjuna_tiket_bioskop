@@ -22,14 +22,12 @@ class AdminOrderController extends Controller
         $listnavitem = Dashboard::getNav();
         $auth = auth()->user();
         $orders = Order::with('user', 'payment')->latest('created_at')->paginate(6);
-        $users = User::latest('created_at')->get();
 
         return view('dashboard.admin.orders.index', [
             'title' => 'Dashboard',
             'listnav' => $listnavitem,
             'auth' => $auth,
             'orders' => $orders,
-            'users' => $users,
         ]);
     }
 
