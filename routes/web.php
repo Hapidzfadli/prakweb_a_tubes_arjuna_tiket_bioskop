@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminCustomer;
 use App\Http\Controllers\AdminOrderController;
+use App\Http\Controllers\AdminSalesController;
 use App\Http\Controllers\AjaxController;
 use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\SettingController;
@@ -21,6 +22,7 @@ use App\Http\Controllers\OrderAjaxController;
 use App\Http\Controllers\PaymentCallbackController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\TheaterController;
+use App\Http\Controllers\TicketController;
 
 /*
 |--------------------------------------------------------------------------
@@ -102,3 +104,6 @@ Route::resource('/dashboard/member/setting', SettingController::class);
 Route::resource('/dashboard/setting', SettingController::class);
 Route::resource('/dashboard/member/password', PasswordController::class);
 Route::resource('/dashboard/password', PasswordController::class);
+
+Route::resource('/dashboard/sales', AdminSalesController::class);
+Route::get('/dashboard/tiket/{id}', [TicketController::class, 'index']);

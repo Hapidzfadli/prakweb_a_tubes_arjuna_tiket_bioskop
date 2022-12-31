@@ -306,7 +306,7 @@ body {
     color: white;
 }
 
-.details .recentOrders, .recentCustomer, .customer-details {
+.details .recentOrders, .recentCustomer, .customer-details, .movie-detail {
     border-radius: 20px;
     box-shadow: rgba(170, 176, 181, 0.2) 0px 8px 24px;
 }
@@ -349,6 +349,15 @@ a.badge-delete:hover {
 }
 a.badge-edit:hover {
     background: rgb(178, 178, 0) !important;
+}
+.detail-tiket {
+    width: 100%;
+    color: white;
+    font-size: 14px;
+    font-weight: 520;
+    border-radius: 20px;
+    min-height: calc(100% - 60px);
+    background: linear-gradient(40deg, var(--blue),#2E3CB0) !important;
 }
 
 /* // Small devices (landscape phones, 576px and up) */

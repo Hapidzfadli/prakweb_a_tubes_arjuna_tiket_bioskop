@@ -20,8 +20,6 @@ class DashboardController extends Controller
         $orders = Dashboard::getRecentOrder();
         $ordersMember = $orders->where('user_id', '=', $auth->id);
 
-        count($orders);
-
         if ($auth->is_admin) {
             $listnavitem = Dashboard::getNav();
             return view('dashboard.admin.index', [
