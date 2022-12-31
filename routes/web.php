@@ -98,5 +98,7 @@ Route::resource('/dashboard/member/tiket', MemberTiketController::class);
 Route::resource('/dashboard/orders', AdminOrderController::class);
 Route::get('/dashboard/orders/pdf/{id}', [AdminOrderController::class, 'pdf'])->name('pdf');
 Route::get('/dashboard/orders/downloadpdf/{id}', [AdminOrderController::class, 'downloadPDF'])->name('down.pdf');
+Route::resource('/dashboard/member/setting', SettingController::class);
 Route::resource('/dashboard/setting', SettingController::class);
+Route::resource('/dashboard/member/password', PasswordController::class);
 Route::resource('/dashboard/password', PasswordController::class);

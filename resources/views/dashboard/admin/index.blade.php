@@ -4,15 +4,17 @@
     <div class="card-statistic p-4">
         <div class="row">
             <div class="col-lg-3 col-6">
-                <div class="row">
-                    <div class="col-8">
-                        <h2 class="number-stats">{{count($orders)}}</h2>
-                        <div class="name-stats">Orders</div>
+                <a href="/dashboard/orders" class="text-decoration-none">
+                    <div class="row" style="cursor: pointer !important">
+                        <div class="col-8">
+                            <h2 class="number-stats">{{count($orders)}}</h2>
+                            <div class="name-stats">Orders</div>
+                        </div>
+                        <div class="col-4 icon-stats">
+                            <ion-icon name="chatbubble-outline"></ion-icon>
+                        </div>
                     </div>
-                    <div class="col-4 icon-stats">
-                        <ion-icon name="chatbubble-outline"></ion-icon>
-                    </div>
-                </div>
+                </a>
             </div>
             <div class="col-lg-3 col-6">
                 <div class="row">
@@ -56,7 +58,7 @@
         <div class="recentOrders col-lg-8 col-md-12 p-3 rounded">
             <div class="cardHeader d-flex justify-content-between">
                 <h5>Recent Orders</h5>
-                <a href="#" class="badge badge-primary bg-primary h-50">View All</a>
+                <a href="/dashboard/orders" class="badge badge-primary bg-primary h-50">View All</a>
             </div>
             <div class="table-order overflow-auto">
                 <table class="table align-middle mb-0 bg-white">
@@ -89,7 +91,7 @@
                             </td>
                             <td>
                                 @if ($order->payment != null)
-                                    @if ($order->payment->transaction_status == "settlement")
+                                    @if ($order->payment->transaction_status == "settlement" || $order->payment->transaction_status == "capture")
                                         <span class="badge bg-success rounded-pill d-inline">
                                             {{$order->payment->transaction_status}}
                                         </span>
