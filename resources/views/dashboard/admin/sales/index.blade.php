@@ -65,7 +65,7 @@
                             <td>
                                 <div class="row w-100">
                                     <div class="col-lg-6">
-                                        <a href="/dashboard/sales/{{{$sale->order_id}}}/tiket" class="badge badge-edit text-white bg-warning rounded-pill d-inline">
+                                        <a href="/dashboard/tiket/{{$sale->order_id}}" class="badge badge-edit text-white bg-warning rounded-pill d-inline">
                                             tiket
                                         </a>
                                         
