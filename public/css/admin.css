@@ -306,10 +306,23 @@ body {
     color: white;
 }
 
-.details .recentOrders, .recentCustomer {
+.details .recentOrders, .recentCustomer, .customer-details {
+    border-radius: 20px;
     box-shadow: rgba(170, 176, 181, 0.2) 0px 8px 24px;
 }
-
+.customer-details .title {
+    font-weight: bold;
+}
+.invoice {
+    color: white;
+    border-radius: 20px;
+}
+.purple-gradient {
+    background: linear-gradient(40deg,#ff6ec4,#7873f5) !important;
+}
+.customer-details .address {
+    font-size: 15px;
+}
 .cardHeader h5 {
     color: var(--blue);
 }
