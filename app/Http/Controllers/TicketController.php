@@ -23,6 +23,7 @@ class TicketController extends Controller
                 'listnav' => $listnavitem,
                 'tiket' => $tiket,
                 'auth' => $auth,
+                'movie' => $movie
             ]);
         } else {
             $listnavitem = Dashboard::getNavUser();

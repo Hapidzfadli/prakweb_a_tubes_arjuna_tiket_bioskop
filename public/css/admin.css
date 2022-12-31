@@ -306,7 +306,7 @@ body {
     color: white;
 }
 
-.details .recentOrders, .recentCustomer, .customer-details {
+.details .recentOrders, .recentCustomer, .customer-details, .movie-detail {
     border-radius: 20px;
     box-shadow: rgba(170, 176, 181, 0.2) 0px 8px 24px;
 }
