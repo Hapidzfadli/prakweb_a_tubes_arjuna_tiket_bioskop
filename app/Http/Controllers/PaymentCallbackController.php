@@ -16,7 +16,15 @@ class PaymentCallbackController extends Controller
         $order = Payment::where('order_id', $json->order_id)->first();
 
         if ($order == null) {
-            return abort(404);
+            return Payment::create([
+                "transaction_time" => $json->transaction_time,
+                "transaction_id" => $json->transaction_id,
+                "transaction_status" => $json->transaction_status,
+                "payment_type" => $json->payment_type,
+                "order_id" => $json->order_id,
+                "status_code" => $json->status_code,
+                "signature_key" => $json->signature_key,
+            ]);
         }
 
         if ($order->signature_key != $json->signature_key) {
