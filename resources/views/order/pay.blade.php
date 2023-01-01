@@ -68,7 +68,11 @@
 
                 </div>
                 <div class="col-12" style="display: grid">
-                    <button id="btn-bayar" type="button" class="btn btn-secondary w-100 rounded mx-auto">Bayar</button>
+                    <button id="btn-bayar" type="button" class="btn-bayar btn btn-secondary w-100 rounded mx-auto">Bayar
+                        <input type="hidden" name="order_id" value="{{$order->order_id}}">
+                        <input type="hidden" name="gross_amount" value="{{$order->total_price}}">
+                        <input type="hidden" name="snap_token" value="{{$order->snap_token}}">
+                    </button>
                 </div>
                 <div class="my-5"></div>
                 <div data-v-cbcc5384="" style="" class="col-12">
@@ -100,52 +104,51 @@
         </div>
     </div>
 	<script type="text/javascript">
-		var payButton = document.getElementById('btn-bayar');
-		payButton.addEventListener('click', function () {
-            window.snap.pay('{{$snap}}', {
-	          onSuccess: function(result){
-	            /* You may add your own implementation here */
-	            console.log(result);
-                $.ajax({
-                    type: "POST",
-                    url: "{{ route('order.success.payment') }}",
-                    data: { data: result, _token: '{{csrf_token()}}' },
-                    success: function (data) {
-                        console.log(data);
-                    },
-                    error: function (data, textStatus, errorThrown) {
-                        console.log(data);
-                    },
-                });
-                window.location.replace(document.location.origin + '/dashboard/member/tiket');
-	          },
-	          onPending: function(result){
-	            /* You may add your own implementation here */
-	            console.log(result);
-                var orderid = "{{$order->order_id}}";
-                $.ajax({
-                    type: "POST",
-                    url: "{{ route('order.pending.payment') }}",
-                    data: { data: result, order_id : orderid, _token: '{{csrf_token()}}' },
-                    success: function (data) {
-                        console.log(data);
-                    },
-                    error: function (data, textStatus, errorThrown) {
-                        console.log(data);
-                    },
-                });
-                window.location.replace(document.location.origin + '/dashboard/member/orders');
-	          },
-	          onError: function(result){
-	            /* You may add your own implementation here */
-	            alert("payment failed!"); console.log(result);
-	          },
-	          onClose: function(){
-	            /* You may add your own implementation here */
-                window.location.replace(document.location.origin + '/dashboard/member/orders');
-	          }
-	        })
-		});
+    $('.btn-bayar').click(function(){
+       var snap_token = $(this).find("input[name='snap_token']").val();
+       var orderid = $(this).find("input[name='order_id']").val();
+       var grossamount = $(this).find("input[name='gross_amount']").val();
+       window.snap.pay(snap_token, {
+        onSuccess: function(result){
+            console.log(result);
+            $.ajax({
+                type: "POST",
+                url: "{{ route('order.success.payment') }}",
+                data: { data: result, _token: '{{csrf_token()}}' },
+                success: function (data) {
+                    console.log(data);
+                    window.location.replace(document.location.origin + '/dashboard/member/tiket');
+                },
+                error: function (data, textStatus, errorThrown) {
+                    console.log(data);
+                },
+            });
+            
+        },
+        onPending: function(result){            
+            $.ajax({
+                type: "POST",
+                url: "{{ route('order.pending.payment') }}",
+                data: { data: result, order_id : orderid, gross_amount : grossamount, _token: '{{csrf_token()}}' },
+                success: function (data) {
+                    console.log(data);
+                    window.location.replace(document.location.origin + '/dashboard/member/orders');
+                },
+                error: function (data, textStatus, errorThrown) {
+                    console.log(data);
+                },
+            });
+            
+        },
+        onError: function(result){
+                /* You may add your own implementation here */
+                alert("payment failed!"); console.log(result);
+        },
+        onClose: function(){
+        /* You may add your own implementation here */
+        }
+       });
+    })
 	  </script>
 
 @endsection

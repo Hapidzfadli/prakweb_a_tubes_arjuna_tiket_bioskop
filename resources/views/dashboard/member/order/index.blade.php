@@ -98,8 +98,11 @@
                                             pay
                                             
                                             @if ($order->payment == null || $order->payment->transaction_status != "settlement" && $order->payment->transaction_status != "capture" )
-                                                <input type="hidden" value="{{$order->snap_token}}">
+                                                <input type="hidden" name="snap_token" value="{{$order->snap_token}}">
+                                                
                                             @endif
+                                            <input type="hidden" name="order_id" value="{{$order->order_id}}">
+                                            <input type="hidden" name="gross_amount" value="{{$order->total_price}}">
                                         </a>
                                         
                                     </div>
@@ -120,7 +123,9 @@
     // payment
     var payButton = document.getElementById('btn-bayar');
     $('.btn-bayar').click(function(){
-       var snap_token = $(this).find('input').val();
+       var snap_token = $(this).find("input[name='snap_token']").val();
+       var orderid = $(this).find("input[name='order_id']").val();
+       var grossamount = $(this).find("input[name='gross_amount']").val();
        window.snap.pay(snap_token, {
         onSuccess: function(result){
             console.log(result);
@@ -137,7 +142,20 @@
                 });
         },
         onPending: function(result){
-            console.log(result);
+            // console.log(orderid);
+            // console.log(result);
+            
+            $.ajax({
+                type: "POST",
+                url: "{{ route('order.pending.payment') }}",
+                data: { data: result, order_id : orderid, gross_amount : grossamount, _token: '{{csrf_token()}}' },
+                success: function (data) {
+                    console.log(data);
+                },
+                error: function (data, textStatus, errorThrown) {
+                    console.log(data);
+                },
+            });
         },
         onError: function(result){
                 /* You may add your own implementation here */
