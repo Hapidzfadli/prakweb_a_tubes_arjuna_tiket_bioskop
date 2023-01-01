@@ -3,13 +3,13 @@
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="http://demo-tubes.arjuna-mc.site/img/mamrigor.jpg" class="d-block w-100" alt="...">
+            <img src="/img/KyotoMsite.jpg" class="d-block w-100" alt="...">
           </div>
           <div class="carousel-item">
-            <img src="http://demo-tubes.arjuna-mc.site/img/CroffleMsite.jpg" class="d-block w-100" alt="...">
+            <img src="/img/CroffleMsite.jpg" class="d-block w-100" alt="...">
           </div>
           <div class="carousel-item">
-            <img src="http://demo-tubes.arjuna-mc.site/img/Potongan50rbMsite.jpg" class="d-block w-100" alt="...">
+            <img src="/img/H_Msite.jpg" class="d-block w-100" alt="...">
           </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
