@@ -23,7 +23,11 @@ class PaymentCallbackController extends Controller
             return abort(404);
         }
         return $order->update([
+            "transaction_time" => $json->transaction_time,
+            "transaction_id" => $json->transaction_id,
             "transaction_status" => $json->transaction_status,
+            "payment_type" => $json->payment_type,
+            "order_id" => $json->order_id,
             "status_code" => $json->status_code,
         ]);
     }

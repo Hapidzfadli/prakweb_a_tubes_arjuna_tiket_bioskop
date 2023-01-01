@@ -117,6 +117,7 @@
                         console.log(data);
                     },
                 });
+                window.location.replace(document.location.origin + '/dashboard/member/tiket');
 	          },
 	          onPending: function(result){
 	            /* You may add your own implementation here */
@@ -133,6 +134,7 @@
                         console.log(data);
                     },
                 });
+                window.location.replace(document.location.origin + '/dashboard/member/orders');
 	          },
 	          onError: function(result){
 	            /* You may add your own implementation here */
@@ -140,6 +142,7 @@
 	          },
 	          onClose: function(){
 	            /* You may add your own implementation here */
+                window.location.replace(document.location.origin + '/dashboard/member/orders');
 	          }
 	        })
 		});
