@@ -72,38 +72,45 @@ Route::get('/schedules/{theater}/{id}', function ($theater, $id) {
     return $schedules;
 });
 
-Route::get('/order', [OrderController::class, 'index'])->middleware('auth');
-Route::controller(OrderAjaxController::class)->group(function () {
-    Route::post('order-ajax-cities', 'cities')->name('order.cities');
-    Route::post('order-ajax-pending-payment', 'pendingPayment')->name('order.pending.payment');
-    Route::post('order-ajax-success-payment', 'successPayment')->name('order.success.payment');
-    Route::post('order-ajax-theaters', 'theaters')->name('order.theaters');
-    Route::post('order-ajax-schedules', 'schedules')->name('order.schedules');
-    Route::post('order-ajax-schedules-details', 'schedulesDetails')->name('order.schedules.details');
-})->middleware('auth');
-
-Route::post('/pay', [OrderController::class, 'insertData'])->middleware('auth');
-Route::post('/payment', [OrderController::class, 'order'])->middleware('auth');
-Route::get('/payment', [OrderController::class, 'order'])->middleware('auth');
-
 Route::get('auth/google', [GoogleController::class, 'redirectToGoogle']);
 Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
 Route::post('payments/midtrans-notification', [PaymentCallbackController::class, 'receive']);
 Route::post('search', [AjaxController::class, 'ajaxSearch'])->name('search');
 Route::get('search', [SearchController::class, 'index']);
 
-Route::resource('/dashboard/customers', AdminCustomer::class);
-Route::resource('/dashboard/member/orders', MemberOrders::class);
-Route::resource('/dashboard/member/tiket', MemberTiketController::class);
-Route::resource('/dashboard/orders', AdminOrderController::class);
-Route::get('/dashboard/orders/pdf/{id}', [AdminOrderController::class, 'pdf'])->name('pdf');
-Route::get('/dashboard/orders/downloadpdf/{id}', [AdminOrderController::class, 'downloadPDF'])->name('down.pdf');
-Route::resource('/dashboard/member/setting', SettingController::class);
-Route::resource('/dashboard/setting', SettingController::class);
-Route::resource('/dashboard/member/password', PasswordController::class);
-Route::resource('/dashboard/password', PasswordController::class);
+//route admin 
+Route::middleware('admin')->group(function () {
+    Route::resource('/dashboard/sales', AdminSalesController::class);
+    Route::resource('/dashboard/orders', AdminOrderController::class);
+    Route::resource('/dashboard/customers', AdminCustomer::class);
+});
 
-Route::resource('/dashboard/sales', AdminSalesController::class);
-Route::get('/dashboard/tiket/{id}', [TicketController::class, 'index']);
+// route auth
+Route::middleware('auth')->group(function () {
+    //order
+    Route::get('/order', [OrderController::class, 'index']);
+    Route::post('/pay', [OrderController::class, 'insertData']);
+    Route::post('/payment', [OrderController::class, 'order']);
+    Route::get('/payment', [OrderController::class, 'order']);
+    Route::controller(OrderAjaxController::class)->group(function () {
+        Route::post('order-ajax-cities', 'cities')->name('order.cities');
+        Route::post('order-ajax-pending-payment', 'pendingPayment')->name('order.pending.payment');
+        Route::post('order-ajax-success-payment', 'successPayment')->name('order.success.payment');
+        Route::post('order-ajax-theaters', 'theaters')->name('order.theaters');
+        Route::post('order-ajax-schedules', 'schedules')->name('order.schedules');
+        Route::post('order-ajax-schedules-details', 'schedulesDetails')->name('order.schedules.details');
+    });
+
+    //dashboard
+    Route::get('/dashboard', [DashboardController::class, 'index']);
+    Route::resource('/dashboard/member/orders', MemberOrders::class);
+    Route::resource('/dashboard/member/tiket', MemberTiketController::class);
+    Route::get('/dashboard/orders/pdf/{id}', [AdminOrderController::class, 'pdf'])->name('pdf');
+    Route::get('/dashboard/orders/downloadpdf/{id}', [AdminOrderController::class, 'downloadPDF'])->name('down.pdf');
+    Route::resource('/dashboard/member/setting', SettingController::class);
+    Route::resource('/dashboard/setting', SettingController::class);
+    Route::resource('/dashboard/member/password', PasswordController::class);
+    Route::resource('/dashboard/password', PasswordController::class);
+    Route::get('/dashboard/tiket/{id}', [TicketController::class, 'index']);
+});
