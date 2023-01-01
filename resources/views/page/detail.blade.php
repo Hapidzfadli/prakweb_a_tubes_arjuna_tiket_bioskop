@@ -14,7 +14,6 @@
             <div class="col-lg-12 title-detail">
                 <a href=""></a><h2>{{ $movie['title'] }}</h2>
             </div>
-
             <div class="col-lg-12">
                 <div class="genre">
                     <span class="bg-grey">Genre</span>
