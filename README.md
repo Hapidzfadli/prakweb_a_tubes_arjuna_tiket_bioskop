@@ -13,17 +13,16 @@ Project Arjuna21 adalah project pengembangan aplikasi berbasis web yang bertujua
 
 ## Extension
 
-"php": "^8.0.2",
-"barryvdh/laravel-dompdf": "^2.0",
-"fakerphp/faker": "^1.21",
-"guzzlehttp/guzzle": "^7.2",
-"laravel/framework": "^9.19|^8.75",
-"laravel/sanctum": "^3.0",
-"laravel/socialite": "*",
-"laravel/tinker": "^2.7",
-"midtrans/midtrans-php": "^2.5",
-"nesbot/carbon": "^2.64",
-"simplesoftwareio/simple-qrcode": "~4"
+- "php": "^8.0.2",
+- "barryvdh/laravel-dompdf": "^2.0",
+- "fakerphp/faker": "^1.21",
+- "guzzlehttp/guzzle": "^7.2",
+- "laravel/framework": "^9.19|^8.75",
+- "laravel/sanctum": "^3.0",
+- "laravel/socialite": "*",
+-  "midtrans/midtrans-php": "^2.5",
+-  "nesbot/carbon": "^2.64",
+-  "simplesoftwareio/simple-qrcode": "~4"
 
 ## Contributing
 
