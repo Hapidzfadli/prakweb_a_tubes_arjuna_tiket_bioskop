@@ -56,7 +56,7 @@ nav {
 /* // Small devices (landscape phones, 576px and up) */
 @media (max-width: 576px) { 
   .card {
-    width: 120px;
+    width: 160px;
     height: 220px;
   }
   .detail-img {
