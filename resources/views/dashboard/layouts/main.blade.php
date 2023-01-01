@@ -63,6 +63,7 @@
         parts[0]=parts[0].replace(/\B(?=(\d{3})+(?!\d))/g,".");
         return parts.join(",");
         }
+    
     $(document).ready(function(){
         $('#search').keyup(function() {
             var value = $(this).val().toLowerCase();

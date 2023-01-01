@@ -57,16 +57,20 @@ class MemberOrders extends Controller
      */
     public function show($id)
     {
-        // return $id;
         $listnavitem = Dashboard::getNavUser();
         $auth = auth()->user();
-        $ordersMember = Order::with('user', 'payment')->latest('created_at')->paginate(6);
+        $details = Dashboard::getRecentOrder()->where('order_id', '=', $id)->first();
 
-        return view('dashboard.member.order.show', [
-            'title' => 'Dashboard',
+        $ppn = ($details->total_price / 100) * 11;
+        $price = floor($details->total_price - $ppn);
+
+        return view('dashboard.admin.sales.show', [
+            'title' => 'Details Order',
             'listnav' => $listnavitem,
             'auth' => $auth,
-            'orders' => $ordersMember,
+            'detail' => $details,
+            'ppn' => $ppn,
+            'price' => $price
         ]);
     }
 

@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('signature_key')->nullable();
             $table->timestamp('settlement_time')->useCurrent()->nullable();
             $table->string('payment_type');
-            $table->string('order_id')->nullable();
+            $table->string('order_id')->unique()->nullable();
             $table->string('status_code');
             $table->string('pdf_url')->nullable();
             $table->integer('gross_amount')->nullable();
