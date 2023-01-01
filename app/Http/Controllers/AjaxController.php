@@ -38,11 +38,16 @@ class AjaxController extends Controller
             });
 
             return $orders;
-        }
-        // } elseif ($request->url == '/dashboard/member/orders') {
-        //     $order = Dashboard::getRecentOrder()->where('user_id', '=', auth()->user()->id)->filter(function($item) use ($title) {
-        //         return false !== stristr($item['name'], $title) || false != stristr()
-        //     }); 
+        } elseif ($request->url == '/dashboard/member/orders') {
+            $orders = Dashboard::getRecentOrder()->where('user_id', '=', auth()->user()->id)->filter(function ($item) use ($title) {
+                if ($item->payment != null) {
+                    return false !== stristr($item->user->name, $title) || false !== stristr($item->user->email, $title) || false !== stristr($item->order_id, $title) || false !== stristr($item->movie, $title) || false !== stristr($item->total_price, $title) || false !== stristr($item->payment->transaction_status, $title);
+                } else {
+                    return false !== stristr($item->user->name, $title) || false !== stristr($item->user->email, $title) || false !== stristr($item->order_id, $title) || false !== stristr($item->movie, $title) || false !== stristr($item->total_price, $title);
+                }
+            });
 
+            return $orders;
+        }
     }
 }

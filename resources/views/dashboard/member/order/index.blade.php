@@ -27,6 +27,7 @@
                 <thead class="bg-light">
                     <tr>
                         <th>Name</th>
+                        <th>Invoice</th>
                         <th>Movie</th>
                         <th>Price</th>
                         <th>Status</th>
@@ -45,6 +46,9 @@
                                         <p class="text-muted mb-0">{{$auth->email}}</p>
                                     </div>
                                 </div>
+                            </td>
+                            <td>
+                                <p class="fw-normal mb-1">#{{$order->order_id}}</p>
                             </td>
                             <td>
                                 <p class="text-muted mb-0">{{$order->movie}}</p>
@@ -83,19 +87,14 @@
                             </td>
                             <td>
                                 <div class="row w-100">
-                                    <div class="col-lg-6">
-                                        <form action="/dashboard/member/orders/{{{$order->order_id}}}" method="POST">
-                                            @method('DELETE')
-                                            @csrf
-                                            <button type="submit" onclick="return confirm('Are you sure?')" class="badge badge-delete text-white bg-danger rounded-pill d-inline">
-                                                delete
-                                            </button>               
-                                        </form> 
-                                    </div>
-
-                                    <div class="col-lg-6">
-                                        <a href="/dashboard/member/orders/{{{$order->order_id}}}" class="badge badge-edit text-white bg-primary rounded-pill d-inline">
+                                    <div class="col-6">
+                                        <a href="/dashboard/member/orders/{{$order->order_id}}" class="badge badge-edit text-white bg-primary rounded-pill d-inline">
                                             views
+                                        </a>
+                                    </div>
+                                    <div class="col-6">
+                                        <a href="#" class="badge badge-edit text-white bg-secondary rounded-pill d-inline">
+                                            pay
                                         </a>
                                     </div>
                                 </div>
