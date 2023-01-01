@@ -19,9 +19,10 @@ class MemberTiketController extends Controller
     {
         $listnavitem = Dashboard::getNavUser();
         $auth = auth()->user();
-        $value = 'settlement';
-        $tiket = Order::with('payment:order_id,transaction_status,gross_amount')->whereHas('payment', function ($q) use ($value) {
-            $q->where('transaction_status', '=', $value);
+        $settlement = 'settlement';
+        $capture = 'capture';
+        $tiket = Order::with('payment:order_id,transaction_status,gross_amount')->whereHas('payment', function ($q) use ($settlement, $capture) {
+            $q->where('transaction_status', '=', $settlement)->orWhere('transaction_status', '=', $capture);
         })->where('user_id', '=', $auth->id)->paginate(6);
 
 
