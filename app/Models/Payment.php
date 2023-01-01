@@ -23,7 +23,16 @@ class Payment extends Model
         $signature_key = $result->data['order_id'] . $result->data['status_code'] . $result->data['gross_amount'] . env('MIDTRANS_SERVER_KEY');
         $data['signature_key'] = hash("sha512", $signature_key);
 
-        Payment::create($data);
+        $data_order = strval($data['order_id']);
+
+        $cekorder = Payment::where('order_id', '=', $data_order)->first();
+
+        if ($cekorder) {
+            Payment::where('order_id', '=', $data_order)->update($data);
+        } else {
+            Payment::create($data);
+        }
+
         return $data;
     }
 
@@ -40,14 +49,21 @@ class Payment extends Model
             'pdf_url' => $result->has('data.pdf_url') ? $result->data['pdf_url'] : null,
             'gross_amount' => $result->has('data.gross_amount') ? $result->data['gross_amount'] : null,
             'fraud_status' => $result->has('data.fraud_status') ? $result->data['fraud_status'] : null,
-            'currency ' => $result->has('data.currency') ? $result->data['currency'] : null,
         ];
 
         $signature_key = $result->data['order_id'] . $result->data['status_code'] . $result->data['gross_amount'] . env('MIDTRANS_SERVER_KEY');
 
         $data['signature_key'] = hash("sha512", $signature_key);
 
-        Payment::create($data);
+        $data_order = strval($data['order_id']);
+
+        $cekorder = Payment::where('order_id', '=', $data_order)->first();
+
+        if ($cekorder) {
+            Payment::where('order_id', '=', $data_order)->update($data);
+        } else {
+            Payment::create($data);
+        }
 
         return $data;
     }

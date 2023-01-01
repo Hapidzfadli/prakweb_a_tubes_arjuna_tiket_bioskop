@@ -286,23 +286,23 @@ body {
     color: var(--blue);
 }
 
-.card-statistic .col-lg-3 .row {
+.card-statistic .col-6 .row {
     padding: 10px;
     width: 98%;
     box-shadow: rgba(170, 176, 181, 0.2) 0px 8px 24px;
     border-radius: 20px;
 }
-.card-statistic .col-lg-3 {
+.card-statistic .col-6 {
     margin-bottom: 20px;
 }
 
-.card-statistic .col-lg-3 .row:hover {
+.card-statistic .col-6 .row:hover {
     background-color: var(--blue);
 }
 
-.card-statistic .col-lg-3 .row:hover .name-stats,
-.card-statistic .col-lg-3 .row:hover .number-stats ,
-.card-statistic .col-lg-3 .row:hover .icon-stats ion-icon {
+.card-statistic .col-6 .row:hover .name-stats,
+.card-statistic .col-6 .row:hover .number-stats ,
+.card-statistic .col-6 .row:hover .icon-stats ion-icon {
     color: white;
 }
 

@@ -75,30 +75,33 @@
             </div>
             <div class="total-amount row">
                 <div class="col-lg-8 mt-3">
-                    <div class="row">
-                        <div class="col-6">
-                            <p class="fw-normal text-muted mb-0">Transaction Time:</p>
+                    @if($detail->payment != null)
+                        <div class="row">
+                            <div class="col-6">
+                                <p class="fw-normal text-muted mb-0">Transaction Time:</p>
+                            </div>
+                            <div class="col-6">
+                                <p class="text-muted fw-bolder mb-0">{{date('d M, Y', strtotime("+0 day", strtotime($detail->payment->transaction_time)))}}</p>
+                            </div>
                         </div>
-                        <div class="col-6">
-                            <p class="text-muted fw-bolder mb-0">{{date('d M, Y', strtotime("+0 day", strtotime($detail->payment->transaction_time)))}}</p>
+                        <div class="row">
+                            <div class="col-6">
+                                <p class="fw-normal text-muted mb-0">Transaction Status:</p>
+                            </div>
+                            <div class="col-6">
+                                <p class="text-muted fw-bolder mb-0">{{$detail->payment->transaction_status}}</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-6">
-                            <p class="fw-normal text-muted mb-0">Transaction Status:</p>
+                        <div class="row">
+                            <div class="col-6">
+                                <p class="fw-normal text-muted mb-0">Payment Type:</p>
+                            </div>
+                            <div class="col-6">
+                                <p class="text-muted fw-bolder mb-0">{{$detail->payment->payment_type}}</p>
+                            </div>
                         </div>
-                        <div class="col-6">
-                            <p class="text-muted fw-bolder mb-0">{{$detail->payment->transaction_status}}</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-6">
-                            <p class="fw-normal text-muted mb-0">Payment Type:</p>
-                        </div>
-                        <div class="col-6">
-                            <p class="text-muted fw-bolder mb-0">{{$detail->payment->payment_type}}</p>
-                        </div>
-                    </div>
+                    
+                    @endif
                 </div>
                 <div class="col-lg-4 mt-3">
                     <div class="row">
