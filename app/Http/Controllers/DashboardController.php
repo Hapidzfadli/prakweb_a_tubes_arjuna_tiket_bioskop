@@ -33,11 +33,13 @@ class DashboardController extends Controller
             ]);
         } else {
             $listnavitem = Dashboard::getNavUser();
+            $tickets = Dashboard::getSales()->where('user_id', '=', $auth->id);
             return view('dashboard.member.index', [
                 'title' => 'Dashboard',
                 'listnav' => $listnavitem,
                 'auth' => $auth,
                 'orders' => $ordersMember,
+                'tickets' => $tickets,
             ]);
         }
     }
