@@ -44,7 +44,7 @@
                 <div class="col-12 col-lg-6 ">
                     <div class="input-group mb-3 position-relative" style="z-index: 100">
                         <label for="username" class="input-group-prepend">
-                            <span style="height: 100%; width 100%;" class="input-group-text rounded-0" id="basic-addon1"><ion-icon name="call-outline"></ion-icon></span>
+                            <span style="height: 100%; width 100%;" class="input-group-text rounded-0" id="basic-addon1"><ion-icon name="finger-print-outline"></ion-icon></span>
                         </label>
                         <input type="text" id="username" class="form-control" hint="off"  autocomplete="off" name="username" value="{{$auth->username}}"  placeholder="Username" required />
                     </div>
