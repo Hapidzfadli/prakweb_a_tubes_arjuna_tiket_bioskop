@@ -27,9 +27,9 @@ class PaymentCallbackController extends Controller
             ]);
         }
 
-        if ($order->signature_key != $json->signature_key) {
-            return abort(404);
-        }
+        // if ($order->signature_key != $json->signature_key) {
+        //     return abort(404);
+        // }
         return $order->update([
             "transaction_time" => $json->transaction_time,
             "transaction_id" => $json->transaction_id,
