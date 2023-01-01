@@ -18,7 +18,7 @@ class MemberOrders extends Controller
         $listnavitem = Dashboard::getNavUser();
         $auth = auth()->user();
         $orders = Dashboard::getRecentOrder();
-        $ordersMember = Order::with('user', 'payment')->latest('created_at')->paginate(6);
+        $ordersMember = Order::with('user', 'payment')->where('user_id', '=', auth()->user()->id)->latest('created_at')->paginate(6);
 
         return view('dashboard.member.order.index', [
             'title' => 'Dashboard',
