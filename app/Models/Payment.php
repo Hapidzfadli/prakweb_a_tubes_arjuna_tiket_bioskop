@@ -16,7 +16,7 @@ class Payment extends Model
             'payment_type' => $result->data['payment_type'],
             'pdf_url' => $result->has('data.pdf_url') ? $result->data['pdf_url'] : null,
             'status_code' => $result->data['status_code'],
-            'gross_amount' => $result->gross_amount,
+            'gross_amount' => $result->gross_amount . ".00",
             'order_id' =>  $result->order_id,
             'transaction_status' => $result->data['transaction_status'],
         ];
