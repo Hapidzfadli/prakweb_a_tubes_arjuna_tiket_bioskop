@@ -21,7 +21,7 @@ class MemberOrders extends Controller
         $ordersMember = Order::with('user', 'payment')->where('user_id', '=', auth()->user()->id)->latest('created_at')->paginate(6);
 
         return view('dashboard.member.order.index', [
-            'title' => 'Dashboard',
+            'title' => 'Orders',
             'listnav' => $listnavitem,
             'auth' => $auth,
             'orders' => $ordersMember,

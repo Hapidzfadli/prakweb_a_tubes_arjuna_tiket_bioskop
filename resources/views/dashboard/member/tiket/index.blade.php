@@ -11,7 +11,7 @@
         @endif
     <div class="recentCustomer col p-3 rounded">
         <div class="cardHeader d-flex justify-content-between">
-            <h5>Customer</h5>
+            <h5>Ticket</h5>
             <div class="search" style="width: 200px; height: 40px; padding-bottom: 8px;">
                 <label for="" style="height: 100%;">
                     <input style="height: 100%" id="search" type="text" placeholder="Search..">
@@ -61,7 +61,7 @@
                             <td>
                                 <div class="row w-100">
                                     <div class="col-lg-6">
-                                        <a href="" class="badge badge-edit text-white bg-primary rounded-pill d-inline">
+                                        <a href="/dashboard/member/tiket/{{$t->order_id}}" class="badge badge-edit text-white bg-primary rounded-pill d-inline">
                                             view
                                         </a>
                                     </div>

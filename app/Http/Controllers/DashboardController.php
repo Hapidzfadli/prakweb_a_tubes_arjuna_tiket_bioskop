@@ -35,7 +35,7 @@ class DashboardController extends Controller
             $listnavitem = Dashboard::getNavUser();
             $tickets = Dashboard::getSales()->where('user_id', '=', $auth->id);
             return view('dashboard.member.index', [
-                'title' => 'Dashboard',
+                'title' => 'Dashboard Member',
                 'listnav' => $listnavitem,
                 'auth' => $auth,
                 'orders' => $ordersMember,

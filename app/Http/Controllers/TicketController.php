@@ -16,23 +16,13 @@ class TicketController extends Controller
         $orders = Dashboard::getRecentOrder();
         $tiket = $orders->where('order_id', '=', $id)->first();
         $movie = Movie::getDetails($tiket->id_movie);
-        if ($auth->is_admin) {
-            $listnavitem = Dashboard::getNav();
-            return view('dashboard.admin.ticket.index', [
-                'title' => 'Dashboard',
-                'listnav' => $listnavitem,
-                'tiket' => $tiket,
-                'auth' => $auth,
-                'movie' => $movie
-            ]);
-        } else {
-            $listnavitem = Dashboard::getNavUser();
-            return view('dashboard.member.tiket.index', [
-                'title' => 'Dashboard',
-                'listnav' => $listnavitem,
-                'auth' => $auth,
-                'tiket' => $tiket,
-            ]);
-        }
+        $listnavitem = Dashboard::getNav();
+        return view('dashboard.admin.ticket.index', [
+            'title' => 'Dashboard',
+            'listnav' => $listnavitem,
+            'tiket' => $tiket,
+            'auth' => $auth,
+            'movie' => $movie
+        ]);
     }
 }
