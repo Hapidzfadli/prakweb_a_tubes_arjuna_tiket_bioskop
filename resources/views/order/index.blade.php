@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('container')
-    <div class="p-4 " style="min-height: 100vh">
+    <div class="p-4 ordersmovie" style="min-height: 100vh">
         <div class="order row py-3 px-1 rounded">
             <div class="col-lg-8">
                 <form action="/pay" method="POST" id="form-bayar">
@@ -45,61 +45,59 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="input-grup">
-                        <div id="schedules" class="row">
-                            <div id="jadwal" class="col position-relative">
-                                <div class="row">
-                                    <div class="col-2">
-                                        <span class="rounded"><i class="bi bi-calendar-event"></i></span>
-                                    </div>
-                                    <div class="col position-absolute text-date" style="left: 29px">
-                                        <p>00-00</p>
-                                    </div>
+                    <div id="schedules" class="row">
+                        <div id="jadwal" class="col-lg-3 mt-2 col-6 position-relative">
+                            <div class="row">
+                                <div class="col-2">
+                                    <span class="rounded"><i class="bi bi-calendar-event"></i></span>
                                 </div>
-                                
-                                
-                                <div class="dropdwn-sc invisible position-absolute top-0">
-                                    <ul id="list-date" class="position-absolute rounded">
-                                        <li class='list-item-sc'>00-00</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div id="time-sl" class="col position-relative">
-                                <div class="row">
-                                    <div class="col-2"><span class="rounded"><i class="bi bi-alarm"></i></span></div>
-                                    <div class="col">
-                                        <select id="time" style="padding: 2px 4px;" name="time" class="form-select" autocomplete="off" aria-label="Default select example">
-                                            <option selected>12:30</option>
-                                            <option>13:00</option>
-                                            <option>15:40</option>
-                                            <option>16:10</option>
-                                            <option>16:40</option>
-                                            <option>19:10</option>
-                                            <option>20:20</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col">
-                                <div class="row">
-                                    <div class="col-2">
-                                        <span class="rounded"><i class="bi bi-grid"></i></span>
-                                    </div>
-                                    <div id="seat" class="col">
-                                        <input type='text' class='text-white seat-i' name='seat[]' style='width: 30px; background-color:transparent; border: none;' value='A0' readonly='readonly'>
-                                    </div>
+                                <div class="col position-absolute text-date" style="left: 29px">
+                                    <p>00-00</p>
                                 </div>
                             </div>
                             
-                            <div class="col">
-                                <div class="row">
-                                    <div class="col-2">
-                                        <span class="rounded"><i class="bi bi-cash-coin"></i></span>
-                                    </div>
-                                    <div id="price" class="col">
-                                        <p>00.00</p>
-                                    </div>
+                            
+                            <div class="dropdwn-sc invisible position-absolute top-0">
+                                <ul id="list-date" class="position-absolute rounded">
+                                    <li class='list-item-sc'>00-00</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div id="time-sl" class="col-lg-3 mt-2 col-6 position-relative">
+                            <div class="row">
+                                <div class="col-2"><span class="rounded"><i class="bi bi-alarm"></i></span></div>
+                                <div class="col">
+                                    <select id="time" style="padding: 2px 4px;" name="time" class="form-select" autocomplete="off" aria-label="Default select example">
+                                        <option selected>12:30</option>
+                                        <option>13:00</option>
+                                        <option>15:40</option>
+                                        <option>16:10</option>
+                                        <option>16:40</option>
+                                        <option>19:10</option>
+                                        <option>20:20</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 mt-2 col-6">
+                            <div class="row">
+                                <div class="col-2">
+                                    <span class="rounded"><i class="bi bi-grid"></i></span>
+                                </div>
+                                <div id="seat" class="col">
+                                    <input type='text' class='text-white seat-i' name='seat[]' style='width: 30px; background-color:transparent; border: none;' value='A0' readonly='readonly'>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-3 mt-2 col-6">
+                            <div class="row">
+                                <div class="col-2">
+                                    <span class="rounded"><i class="bi bi-cash-coin"></i></span>
+                                </div>
+                                <div id="price" class="col">
+                                    <p>00.00</p>
                                 </div>
                             </div>
                         </div>
@@ -111,8 +109,9 @@
 
                     <hr>
                     <div id="jumlah" class="row">
-                        <p class="fs-5">Jumlah tiket</p>
-                        <div class="col mb-3 tiket">
+                        
+                        <div class="col-6 col-lg-3 mb-3 tiket">
+                            <p class="fs-5">Jumlah tiket</p>
                             <span id="kurang" class="rounded">
                                 <i class="bi bi-dash-circle"></i>
                             </span>
@@ -121,10 +120,10 @@
                                 <i class="bi bi-plus-circle"></i>
                             </span>
                         </div>
-                        <div class="col-9">
+                        <div class="col-lg-9 col-12">
                             <div class="show-seat">
                                 <div class="row">
-                                    <div class="col-3">
+                                    <div class="col-12 col-lg-3 mt-2">
                                         @php
                                             $ABC = ['A', 'B', 'C', 'D', 'E', 'F'];
                                         @endphp
@@ -134,14 +133,14 @@
                                            @endfor
                                         @endfor
                                     </div>
-                                    <div class="col-5">
+                                    <div class="col-12 col-lg-5 mt-2">
                                         @for ($i = 0; $i < count($ABC); $i++)
                                            @for ($j = 5; $j < 12; $j++)
                                                 <span>{{$ABC[$i]}}{{$j}}</span>
                                            @endfor
                                         @endfor
                                     </div>
-                                    <div class="col-3">
+                                    <div class="col-12 col-lg-3 mt-2">
                                         @for ($i = 0; $i < count($ABC); $i++)
                                            @for ($j = 12; $j < 16; $j++)
                                                 <span>{{$ABC[$i]}}{{$j}}</span>

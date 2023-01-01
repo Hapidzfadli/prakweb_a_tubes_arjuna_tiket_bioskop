@@ -55,9 +55,23 @@ nav {
 
 /* // Small devices (landscape phones, 576px and up) */
 @media (max-width: 576px) { 
+  .ordersmovie {
+    font-size: 14px !important;
+  }
   .card {
-    width: 160px;
-    height: 220px;
+    width: 110px;
+    height: 180px !important;
+  }
+  .card img {
+    width: 100%;
+    height: 110px;
+  }
+  h6.card-title {
+    font-size: 9px !important;
+    font-weight: 500 !important;
+  }
+  .detail {
+    font-size: 10px !important;
   }
   .detail-img {
     width: 220px;
@@ -140,6 +154,7 @@ footer {
   cursor: pointer;
 }
 
+
 .dropdown ul li img {
   width: 50px;
   padding: 10px;
@@ -147,18 +162,18 @@ footer {
 li {
   list-style: none;
 }
-#schedules .col span {
+#schedules span {
   padding: 2px 4px;
   margin-right: 3px;
   cursor: pointer;
   position: relative;
   z-index: 10;
 }
-#schedules .col span i {
+#schedules span i {
   margin-right: 3px;
 }
 
-#schedules .col span:hover {
+#schedules span:hover {
   background-color: #4e6eaa;
 }
 

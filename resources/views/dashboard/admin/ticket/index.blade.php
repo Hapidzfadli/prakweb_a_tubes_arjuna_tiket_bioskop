@@ -2,7 +2,7 @@
 
 @section('container')
 <div class="details row px-4 gap-3 position-relative mt-2">
-        <div class="recentOrders col-lg-3  p-1" style="min-height: calc(100vh - 70px);">
+        <div class="recentOrders col-lg-3  p-1" >
             <div class="detail-tiket">
                 <div class="p-4">
                     <p class="title-movie mb-2">Movie : {{$tiket->movie}}</p>

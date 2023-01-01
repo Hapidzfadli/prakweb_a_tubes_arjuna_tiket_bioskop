@@ -362,12 +362,23 @@ a.badge-edit:hover {
 
 /* // Small devices (landscape phones, 576px and up) */
 @media (max-width: 576px) { 
+    body {
+        overflow-x: hidden !important;
+    }
     .name {
         display: none;
+    }
+    .navigation.active {
+        display: none;
+    }
+    .main.active {
+        left: 0 !important;
+        width: 100% !important;
     }
     .main {
         width: 100%;
     }
+    
     .number-stats {
         font-size: 22px;
     }
