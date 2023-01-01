@@ -13,7 +13,10 @@
                         </div>
                         <div class="col-6 mt-4">
                             <p class="title-date m-0" style="color: rgb(209, 204, 204)">Seat</p>
-                            <p class="date-tiket m-0">A1, A2</p>
+                            <p class="date-tiket m-0">@foreach (App\Models\Seat::where('order_id', '=', $tiket->order_id)->get() as $seat)
+                                  
+                                {{ $seat->no_seat }}
+                              @endforeach</p>
                         </div>
                         <div class="col-6 mt-4">
                             <p class="title-date m-0" style="color: rgb(209, 204, 204)">Theater</p>
