@@ -31,5 +31,5 @@ Thank you for considering contributing to the Laravel framework! The contributio
 - hapidzfadli@gmail.com
 - https://github.com/arilfajri
 - https://github.com/Nabilfadilah
-- https://github.com/Nabilfadilah
+- https://github.com/hasbulahshopari
 
