@@ -13,9 +13,19 @@ Project Arjuna21 adalah project pengembangan aplikasi berbasis web yang bertujua
 
 ## Sites
 url <a href="http://arjuna-mc.site/">http://arjuna-mc.site/</a>
-demo: Member
-    - username : member@arjuna-mc.site
+<ul>
+    <li>
+    demo: Member
+        <ul>
+    <li>
+        - username : member@arjuna-mc.site
     - password : password
+        </li>
+</ul>
+        
+        
+    </li>
+</ul>
 ## Extension
 
 - "php": "^8.0.2",
