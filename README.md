@@ -11,6 +11,11 @@
 
 Project Arjuna21 adalah project pengembangan aplikasi berbasis web yang bertujuan untuk memudahkan para calon pembeli tiket bioskop membeli dan mengelola tiket. Selain itu dalam aplikasi arjun21 ada user admin yang dapat mengelola aliran data dari custumernya.
 
+## Sites
+url <a href="http://arjuna-mc.site/">http://arjuna-mc.site/</a>
+demo: Member
+    - username : member@arjuna-mc.site
+    - password : password
 ## Extension
 
 - "php": "^8.0.2",
