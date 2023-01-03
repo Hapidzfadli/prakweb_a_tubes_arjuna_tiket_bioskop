@@ -16,12 +16,11 @@ url <a href="http://arjuna-mc.site/">http://arjuna-mc.site/</a>
 <ul>
     <li>
     demo: Member
-        <ul>
-    <li>
-        - username : member@arjuna-mc.site
+     <ul>
+    
+    - username : member@arjuna-mc.site
     - password : password
-        </li>
-</ul>
+    </ul>
         
         
     </li>
